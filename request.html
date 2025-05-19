@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarangayDocs</title>
+    <link rel="stylesheet" href="request.css">
+    <link rel="stylesheet" href="loading.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+    <script type="module" src="request.js"></script>
+    <script type="module" src="index.js"></script>
+</head>
+
+<body class="loading">
+    <div id="loadingScreen">
+      <div class="spinner"></div>
+    </div>
+  
+    <main id="pageContent" style="display: none;">
+
+    <div class="navbar">
+       
+         <div class="navbar-left">
+          <p class="navbar-logo">BarangayDocs</p>
+            <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+         
+            <a href="login.html" id="loginLink" class="login-btn">Login</a>
+        </div>
+    
+        <div class="navbar-links">
+          <a href="index.html"><img src="img/home.png" alt="home" />Home</a>
+          <a href="request.html" id="requestLink"><img src="img/docu.png" alt="request" />Request</a>
+          <a href="announce.html"><img src="img/announce.png" alt="announcements" />Announcements</a>
+          <a href="complaint.html" id="complaintLink"><img src="img/message.png" alt="complaint" /> Complaint</a>
+          <a href="notifications.html"><img src="img/notif.png" alt="notif" />Notifications</a>
+          <a href="login.html" id="loginLink" class="login-btn">Login</a>
+        
+
+ <div id="profileDropdown" class="profile-dropdown" style="display: none;">
+            <button id="profileBtn">👤 Profile ▾</button>
+            <div class="dropdown-content">
+              <p id="userName">Name</p>
+              <p id="userEmail">Email</p>
+              <button id="logoutBtn" class="logout-button">Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Request your Document now</h2><br>
+            <p>Need a Barangay Clearance, Barangay Permit, Certificate of Indigency, or other documents? Request them online here and get notified when they are ready.</p>
+        </div>
+        
+        <div class="how-it-works">
+            <h2>How it Works</h2>
+            <p>Get started with these 3 easy steps:</p>
+        </div>
+        
+        <div class="steps">
+            <div class="step">
+                <h1> 1</h1><h3> Document Request</h3><br>
+                <p>The user logs in, selects the document, fills out the form, and submits the request.</p>
+            </div>
+            <div class="step">
+                <h1>2</h1><h3> Processing & Approval</h3><br>
+                <p>Barangay staff reviews, verifies, and processes the request. Once approved, the system will notify the user.</p>
+            </div>
+            <div class="step">
+                <h1>3</h1><h3> Pickup & Pay</h3><br>
+                <p>The user visits the Barangay office to pick up the document.</p>
+            </div>
+        </div>
+        <hr>
+        <br>
+<h3>Choose Document</h3>
+        <div class="available">
+            
+
+            
+            <div class="documents">
+                <div class="document" data-doc="barangay-permit">Barangay Permit</div>
+                <img src="img/672d666a-f47b-44ba-aaae-73669305d9c1-removebg-preview.png" alt="Barangay Permit" class="document-img" data-doc="barangay-permit">
+                <div class="document" data-doc="barangay-clearance">Barangay Clearance</div>
+                <img src="img/672d666a-f47b-44ba-aaae-73669305d9c1-removebg-preview.png" alt="Barangay Clearance" class="document-img" data-doc="barangay-clearance">
+                <div class="document" data-doc="certificate-of-indigency">Certificate of Indigency</div>
+                <img src="img/672d666a-f47b-44ba-aaae-73669305d9c1-removebg-preview.png" alt="Certificate of Indigency" class="document-img" data-doc="certificate-of-indigency">
+                <div class="document" data-doc="community-tax">Community Tax Certificate</div>
+                <img src="img/672d666a-f47b-44ba-aaae-73669305d9c1-removebg-preview.png" alt="Community Tax Certificate" class="document-img" data-doc="community-tax">
+                <div class="document" data-doc="certificate-of-good-moral">Certificate of Good Moral</div>
+                <img src="img/672d666a-f47b-44ba-aaae-73669305d9c1-removebg-preview.png" alt="Certificate of Good Moral" class="document-img" data-doc="certificate-of-good-moral">
+            </div>
+  </div>
+  
+            <!-- Modal -->
+<div id="requestModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle">Request Form</h2>
+        <form id="requestForm" enctype="multipart/form-data">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required><br>
+        
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
+        
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" name="contactNumber" required><br>
+        
+            <label for="birthDate">Date of Birth:</label>
+            <input type="date" id="birthDate" name="birthDate" required><br>
+        
+        
+            <!-- 🔥 Dynamic requirements appear here -->
+            <div id="additionalFields"></div>
+                    <label for="message">Message (Optional):</label>
+            <textarea id="message" name="message" rows="4" placeholder="Write any additional information..."></textarea><br>
+            <label for="fileUpload">Upload Valid ID:</label>
+            <input type="file" id="fileUpload" name="fileUpload" accept="image/*,application/pdf"><br>
+        
+            <button id="submit-button" type="submit">Submit Request</button>
+        </form>
+        
+        
+
+        
+         
+        
+    </div>
+</div>
+  
+
+<footer class="footer">
+    <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+  </footer>
+</body>
+</html>

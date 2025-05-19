@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+}
+
+.logo {
+    font-size: 50px;
+    margin: 10px 10px 10px 50px;
+    color: #15830b;
+    font-weight: 100px;
+}
+
+/* Navbar */
+  /* Navbar */
+  .navbar {
+    background: #2b2b2b;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+ 
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .navbar-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  
+  .navbar a:hover {
+    background-color: #329e26;
+    transform: scale(1.05);
+  }
+  
+  .navbar-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+  @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar-toggle {
+        display: block;
+      }
+
+      .navbar-links {
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+      }
+
+      .navbar-links.show {
+        max-height: 500px; /* large enough for all links */
+      }
+
+      .navbar a {
+        width: 100%;
+        text-align: left;
+      }
+    }
+  
+
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 30px 0;
+}
+
+.announcement-header {
+  text-align: center;
+  padding: 50px 20px;
+  background: rgb(197, 197, 197);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  margin: 0 200px;
+}
+
+/* Update announcement-list to display vertically */
+.announcement-list {
+  display: block; /* Change from flex to block */
+  margin: 40px 0px 70px 0px;
+}
+
+.announcement {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Set width to 80% to make them fit better vertically */
+  margin: 50px auto; /* Center align the announcements */
+}
+
+.announcement h3 {
+  font-size: 25px;
+  color: #15830b;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.announcement p {
+  font-size: 16px;
+  margin: 40px;
+}
+
+.announcement .date {
+  font-size: 14px;
+  color: #666;
+
+}
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #146b2e;
+  text-align: center;
+  padding: 16px;
+  color: #ffffff;
+  font-size: 14px;
+  border-top: 1px solid #e5e7eb;
+  z-index: 999;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  width: 100%;
+}
+
+#profileBtn {
+  background-color: #146b2e;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 250px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  z-index: 100;
+}
+
+.dropdown-content p {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.logout-button {
+  background-color: #e11d48;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.logout-button:hover {
+  background-color: #b91c1c;
+}
+
+.profile-dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+  display: block;
+}
+
+/* Login Button */
+.login-btn {
+  background-color: #146b2e;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.navbar-links a img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.navbar-links a:hover {
+  background-color: #329e26;
+  transform: scale(1.05);
+  border-radius: 10px;
+}
+#loginLink,
+#profileDropdown {
+  display: none; /* hide by default to prevent flicker */
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 1024px) {
+  .container {
+    width: 90%;
+  }
+
+  .announcement-header {
+    margin: 0 100px;
+    padding: 40px 20px;
+  }
+
+  .announcement {
+    width: 90%;
+  }
+
+  .navbar {
+   flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+  }
+
+  .navbar-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .navbar a {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 36px;
+    margin: 10px 20px;
+  }
+
+  .announcement-header {
+    margin: 0 40px;
+    padding: 30px 20px;
+  }
+
+  .announcement {
+    width: 95%;
+    margin: 30px auto;
+  }
+
+  .announcement h3 {
+    font-size: 20px;
+  }
+
+  .announcement p {
+    margin: 20px;
+    font-size: 15px;
+  }
+
+  .footer {
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  .dropdown-content {
+    min-width: 200px;
+  }
+
+  #profileBtn,
+  .login-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo {
+    font-size: 1.5rem;
+  }
+
+  .announcement-header {
+    margin: 0 20px;
+    padding: 20px;
+  }
+
+  .announcement h3 {
+    font-size: 18px;
+  }
+
+  .announcement p {
+    font-size: 14px;
+    margin: 15px;
+  }
+
+  .announcement {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .logo {
+    font-size: 28px;
+    margin: 10px;
+  }
+
+  .navbar-links a img {
+    margin-right: 5px;
+  }
+
+  .footer {
+    font-size: 10px;
+    padding: 10px;
+  }
+
+  #profileBtn,
+  .login-btn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}

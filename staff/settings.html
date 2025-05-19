@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarangayDocs - Settings</title>
+    <link rel="stylesheet" href="settings.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+    <!-- Font Awesome for the Gear icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+
+    <script type="module" src="settings.js"></script>
+
+</head>
+<body>
+    <!-- Navbar with logo and other links -->
+    <div class="navbar">
+        <h3 id="logo">BarangayDocs</h3>
+        <div class="navbar-links">
+            <a href="Mrequest.html">Manage Requests</a>
+            <a href="Mcomplaints.html">Manage Complaints</a>
+            <a href="Mannouncement.html">Manage Announcements</a>
+        </div>
+        <!-- Gear icon for settings, isolated -->
+        <div class="settings-icon">
+            <a href="settings.html"><i class="fas fa-cog"></i></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Settings</h2>
+           
+            <!-- Additional content for managing settings goes here -->
+        </div>
+    </div>
+    <div class="profile-wrapper">
+        <div class="profile-card">
+          <h3>Admin Profile</h3>
+          <div class="profile-photo-section">
+            <img id="profilePhoto" src="default-avatar.png" alt="Profile Photo" />
+            <input type="file" id="photoUpload" />
+            <button id="uploadPhotoBtn">Upload Photo</button>
+          </div>
+          <div class="admin-details">
+            <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+          </div>
+        </div>
+      </div>
+      
+    
+    <div class="logout-container">
+        <button class="logout-btn" id="logoutBtn">LOG OUT</button>
+    </div>
+    
+   
+
+    <div id="spinnerOverlay" class="spinner-overlay" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+      
+    <footer class="footer">
+        <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+    </footer>
+</body>
+</html>

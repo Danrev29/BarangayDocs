@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BarangayDocs - Submit Complaint</title>
+  <link rel="stylesheet" href="complaint.css"/>
+  <link rel="stylesheet" href="loading.css">
+
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js"></script>
+
+  <script type="module" src="complaint.js"></script>
+  <script type="module" src="index.js"></script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    emailjs.init("O2dvKPhnqFENt2voB");  // Replace with your EmailJS Public Key (not user ID)
+  </script>
+  
+  
+
+
+</head>
+<body class="loading">
+  <div id="loadingScreen">
+    <div class="spinner"></div>
+  </div>
+
+  <main id="pageContent" style="display: none;">
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="navbar-left">
+    <p class="navbar-logo">BarangayDocs</p>
+   <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+  </div>
+
+  <div class="navbar-links">
+    
+    <a href="index.html"><img src="img/home.png" alt="home" />Home</a>
+    <a href="request.html" id="requestLink"><img src="img/docu.png" alt="request" />Request</a>
+    <a href="announce.html"><img src="img/announce.png" alt="announcements" />Announcements</a>
+    <a href="complaint.html" id="complaintLink"><img src="img/message.png" alt="complaint" /> Complaint</a>
+    <a href="notifications.html"><img src="img/notif.png" alt="notif" />Notifications</a>
+<a href="login.html" id="loginLink" class="login-btn">Login</a>
+ <div id="profileDropdown"  class="profile-dropdown">
+      <button id="profileBtn">👤 Profile ▾</button>
+      <div class="dropdown-content">
+        <p id="userName">Name</p>
+        <p id="userEmail">Email</p>
+        <button id="logoutBtn" class="logout-button">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Section -->
+<section class="complaint-container">
+  <div class="complaint-header">
+    <h2>File a Complaint to your Barangay</h2>
+    <p>Have a community concern? Submit a complaint about sanitation, noise, or public safety. Stay informed with updates.</p>
+  </div>
+
+  <form class="complaint-form" id="complaintForm">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" placeholder="Your full name" required>
+  
+    <label for="userAddress">Address:</label>
+    <input type="text" id="userAddress" placeholder="Your full address" required>
+  
+    <label for="complaintMessage">Complaint:</label>
+    <textarea id="complaintMessage" placeholder="Describe your complaint..." rows="6" required></textarea>
+  
+    <label for="complaintImage">Upload Photo (optional):</label>
+    <input type="file" id="complaintImage" accept="image/*"><br>
+  
+    <button type="submit" class="submitBtn">Submit Complaint</button>
+    <p id="responseMessage"></p>
+  </form>
+  
+
+
+  
+</section>
+
+<!-- Display Complaints Section -->
+<section class="complaint-list" id="complaintList">
+  <h2>Your Submitted Complaints</h2>
+  <div id="userComplaints"></div>
+</section>
+
+<!-- Loading Spinner -->
+<!-- Add this spinner HTML -->
+<div id="loadingSpinner" style="display: none;">
+  <div class="spinner"></div> <!-- You can customize this as needed -->
+</div>
+
+
+<!-- No Complaints Yet Message -->
+<p id="noComplaintsMessage" style="display: none; font-size: 18px; color: #777; text-align: center;">
+  You haven't submitted any complaints yet.
+</p>
+
+
+<footer class="footer">
+  <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+</footer>
+
+
+</body>
+</html>
+

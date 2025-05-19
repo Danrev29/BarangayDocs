@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BarangayDocs</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="loading.css" />
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+  <script src="index.js" type="module" defer></script>
+</head>
+<body class="loading">
+  <div id="loadingScreen">
+    <div class="spinner"></div>
+   
+  </div>
+
+  <main id="pageContent" style="display: none;">
+
+    <div class="navbar">
+      <div class="navbar-left">
+        <p class="navbar-logo">BarangayDocs</p>
+    
+        <!-- Hamburger toggle for small screens -->
+         <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+      </div>
+    
+      <!-- Navbar links -->
+      <div class="navbar-links" id="navbarLinks">
+        
+        <a href="index.html"><img src="img/home.png" alt="home" />Home</a>
+        <a href="request.html" id="requestLink"><img src="img/docu.png" alt="request" />Request</a>
+        <a href="announce.html"><img src="img/announce.png" alt="announcements" />Announcements</a>
+        <a href="complaint.html" id="complaintLink"><img src="img/message.png" alt="complaint" /> Complaint</a>
+        <a href="notifications.html"><img src="img/notif.png" alt="notif" />Notifications</a>
+        <a href="login.html" id="loginLink" class="login-btn">Login</a>
+        <!-- Profile Dropdown -->
+        <div id="profileDropdown" class="profile-dropdown">
+          <button id="profileBtn">👤 Profile ▾</button>
+          <div class="dropdown-content">
+            <p id="userName">Name</p>
+            <p id="userEmail">Email</p>
+            <button id="logoutBtn" class="logout-button">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero">
+      
+    </section>
+
+  
+   
+
+  
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step"><div class="step-icon">1</div><h3>Create Account</h3><p>Sign up or log in to your account to get started.</p></div>
+        <div class="step"><div class="step-icon">2</div><h3>Choose Document</h3><p>Select the document or service you need.</p></div>
+        <div class="step"><div class="step-icon">3</div><h3>Submit Request</h3><p>Fill in the necessary details and submit your request online.</p></div>
+        <div class="step"><div class="step-icon">4</div><h3>Get Confirmation</h3><p>Wait for a confirmation and proceed with the process.</p></div>
+      </div>
+    </section>
+<hr>
+
+<!-- Barangay Officials Section -->
+<section class="barangay-hierarchy">
+  <h2>Barangay Officials</h2>
+  <div class="officials-grid">
+
+    <!-- Barangay Chairman -->
+    <div class="official-card">
+      <img src="img/officials.png" alt="Barangay Chairman">
+      <h3>Barangay Chairman</h3>
+      <p>Juan Dela Cruz</p>
+    </div>
+
+    <!-- Kagawads (7 total) -->
+    <div class="official-card">
+      <img src="img/officials.png" alt="Kagawad">
+      <h3>Kagawad</h3>
+      <p>Maria Santos</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="Kagawad">
+      <h3>Kagawad</h3>
+      <p>Jose Ramos</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="Kagawad">
+      <h3>Kagawad</h3>
+      <p>Emily Reyes</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="Kagawad">
+      <h3>Kagawad</h3>
+      <p>Michael Cruz</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="Kagawad">
+      <h3>Kagawad</h3>
+      <p>Daniel Gomez</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="Kagawad">
+      <h3>Kagawad</h3>
+      <p>Patricia Mendoza</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="Kagawad">
+      <h3>Kagawad</h3>
+      <p>Rafael Villanueva</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="Secretary">
+      <h3>Barangay Secretary</h3>
+      <p>Liza Garcia</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="Treasurer">
+      <h3>Barangay Treasurer</h3>
+      <p>Mark dela Peña</p>
+    </div>
+</div>
+
+<h2>SK Officials</h2>
+   
+ <div class="officials-grid">
+<!-- SK Officials -->
+    <div class="official-card">
+      <img src="img/officials.png" alt="SK Chairman">
+      <h3>SK Chairman</h3>
+      <p>Ana Cruz</p>
+    </div>
+
+
+
+    <!-- SK Kagawads (7 total) -->
+    <div class="official-card">
+      <img src="img/officials.png" alt="SK Kagawad">
+      <h3>SK Kagawad</h3>
+      <p>Leo Tan</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="SK Kagawad">
+      <h3>SK Kagawad</h3>
+      <p>Cheska Dizon</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="SK Kagawad">
+      <h3>SK Kagawad</h3>
+      <p>Brian Lopez</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="SK Kagawad">
+      <h3>SK Kagawad</h3>
+      <p>Fiona Delos Reyes</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="SK Kagawad">
+      <h3>SK Kagawad</h3>
+      <p>Gino Javier</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="SK Kagawad">
+      <h3>SK Kagawad</h3>
+      <p>Samantha Cruz</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="SK Kagawad">
+      <h3>SK Kagawad</h3>
+      <p>Carl Ramos</p>
+    </div>
+ <div class="official-card">
+      <img src="img/officials.png" alt=" Secretary">
+      <h3>SK Secretary</h3>
+      <p>Liza Garcia</p>
+    </div>
+    <div class="official-card">
+      <img src="img/officials.png" alt="Treasurer">
+      <h3>SK Treasurer</h3>
+      <p>Mark dela Peña</p>
+    </div>
+    <!-- Secretary and Treasurer -->
+    
+
+  </div>
+</section>
+<hr>
+
+
+    <!-- Contact -->
+    <section class="contact-info">
+      <h2>Contact Information</h2>
+      <p>📍 Barangay Hall, XYZ Street, Your City</p>
+      <p>🕒 Office Hours: Monday to Friday, 8:00 AM – 5:00 PM</p>
+      <p>📞 Contact: 0912-345-6789</p>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+  </footer>
+  
+</body>
+</html>

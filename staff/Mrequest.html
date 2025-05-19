@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BarangayDocs - Manage Overview</title>
+  <link rel="stylesheet" href="Mrequest.css">
+  <!-- Firebase and Firestore scripts -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+  <!-- Font Awesome for gear icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("O2dvKPhnqFENt2voB"); // Replace with your EmailJS public key
+  })();
+</script>
+
+</head>
+
+<body>
+  <div id="pageContent" style="display: none;">
+    <div class="navbar">
+      <h3 id="logo">BarangayDocs</h3>
+      <div class="navbar-links">
+        <a href="Mrequest.html">Manage Requests</a>
+        <a href="Mcomplaints.html">Manage Complaints</a>
+        <a href="Mannouncement.html">Manage Announcements</a>
+      </div>
+      <div class="settings-icon">
+        <a href="settings.html"><i class="fas fa-cog"></i></a>
+      </div>
+    </div>
+
+   
+
+    <footer class="footer">
+      <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <!-- Request Details Modal -->
+<div id="detailsModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Request Details</h2>
+  
+      <div id="modalRequestTypeWrapper"><strong>Document Type:</strong> <span id="modalRequestType"></span></div>
+      <div id="modalFullNameWrapper"><strong>Full Name:</strong> <span id="modalFullName"></span></div>
+      <div id="modalAddressWrapper"><strong>Address:</strong> <span id="modalAddress"></span></div>
+      <div id="modalContactNumberWrapper"><strong>Contact Number:</strong> <span id="modalContactNumber"></span></div>
+      <div id="modalBirthDateWrapper"><strong>Birth Date:</strong> <span id="modalBirthDate"></span></div>
+      <div id="modalMessageWrapper" ><strong>Message:</strong> <span id="modalMessage"></span></div>
+  
+      <!-- Dynamic Document-Specific Fields -->
+      <div id="modalPurposeWrapper"><strong>Purpose (Clearance):</strong> <span id="modalPurpose"></span></div>
+      <div id="modalBusinessNameWrapper"><strong>Business Name (Permit):</strong> <span id="modalBusinessName"></span></div>
+      <div id="modalBusinessAddressWrapper"><strong>Business Address (Permit):</strong> <span id="modalBusinessAddress"></span></div>
+      <div id="modalReasonWrapper"><strong>Reason (Indigency):</strong> <span id="modalReason"></span></div>
+      <div id="modalAnnualIncomeWrapper"><strong>Annual Income (Community Tax):</strong> <span id="modalAnnualIncome"></span></div>
+      <div id="modalInstitutionWrapper"><strong>Institution (Good Moral):</strong> <span id="modalInstitution"></span></div>
+  
+      <div id="modalFileUrlWrapper"><strong>Uploaded ID:</strong> <span id="modalFileUrl"></span></div>
+    </div>
+  </div>
+
+ 
+
+  <div class="container">
+    <div class="section">
+      <h2>Manage Requests</h2>
+  
+      <button class="tab-btn active" data-tab="allRequestsSection">Pending</button>
+      <button class="tab-btn" data-tab="approvedRequestsSection">Approved</button>
+      <button class="tab-btn" data-tab="rejectedRequestsSection">Rejected</button>
+  
+      <!-- All Requests Tab -->
+      <div id="allRequestsSection" class="tab-content" style="display: block;">
+        <div id="loadingMsg">Loading document requests...</div>
+        <h3 style=" padding-top: 20px;">Pending Requests</h3>
+        <table id="requestsTable">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Name</th>
+              <th>Document</th>
+              <th>Contact</th>
+              <th>Date of Birth</th>
+              <th>Request Date</th>
+              <th>Status</th>
+              <th>Full Info</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="emptyMsg" style="display:none;">No requests found.</div>
+      </div>
+  
+      <!-- Approved Tab -->
+      <div id="approvedRequestsSection" class="tab-content" style="display: none;">
+        <h3 style="color: green; padding-top: 20px;">Approved Requests</h3>
+        <table id="approvedRequestsTable">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Full Name</th>
+              <th>Document Type</th>
+              <th>Contact Number</th>
+              <th>Birth Date</th>
+              <th>Request Date</th>
+              <th>Status</th>
+              <th>Full Info</th>
+            
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+  
+      <!-- Rejected Tab -->
+      <div id="rejectedRequestsSection" class="tab-content" style="display: none;">
+        <h3 style="color: red; padding-top: 20px;">Rejected Requests</h3>
+        <table id="rejectedRequestsTable">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Full Name</th>
+              <th>Document Type</th>
+              <th>Contact Number</th>
+              <th>Birth Date</th>
+              <th>Request Date</th>
+              <th>Status</th>
+              <th>Full Info</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="module" src="Mrequest.js"></script>
+</body>
+</html>

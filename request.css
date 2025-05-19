@@ -1,0 +1,565 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body {
+    background-color: #f9f9f9;
+}
+/* Navbar */
+.navbar {
+  background: #2b2b2b;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  flex-wrap: wrap;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+  
+  .navbar-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    background-color: #329e26;
+    transform: scale(1.05);
+  }
+  
+.navbar-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+  @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar-toggle {
+        display: block;
+      }
+
+      .navbar-links {
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+      }
+
+      .navbar-links.show {
+        max-height: 500px; /* large enough for all links */
+      }
+
+      .navbar a {
+        width: 100%;
+        text-align: left;
+      }
+    }
+
+.section {
+    background: rgb(197, 197, 197);
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    border-radius: 20px;
+    margin: 50px auto 20px auto; /* This pushes it below the navbar */
+}
+
+.container {
+    width: 100%;
+    margin: 20px auto 0 auto; /* Add top margin to push content below navbar */
+}
+
+.available {
+    margin: 0, 0, 0, 0;
+    background: rgb(197, 197, 197); /* light gray background */
+    padding: 30px;
+    padding-top: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* subtle shadow for depth */
+    transition: all 0.3s ease;
+}
+
+.available:hover {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2); /* optional: subtle hover effect */
+}
+
+
+.how-it-works {
+    text-align: center;
+    border-radius: 8px;
+   text-align: center;
+   margin: 30px;
+ 
+}
+.steps {
+    display: flex;
+    justify-content: space-around;
+   margin: 10px 50px 50px 50px;
+    
+}
+.step {
+    text-align: center;
+    width: 30%;
+}
+.documents {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.document {
+    text-align: center;
+    width: 18%;
+    padding: 10px;
+   
+}
+h1 {
+    font-size: 50px;
+    color: #15830b;
+}
+h3 {
+  font-size: 25px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logo {
+    font-size: 50px;
+    margin: 10px 10px 10px 50px;
+    color: #15830b;
+    font-weight: 100px;
+   
+}
+hr {
+    margin-left: 100px;
+    margin-right: 100px;
+    border: 2px solid black;
+}
+.available {
+    margin: 0px 200px 100px 200px;
+}
+
+
+.complaint {
+    background: rgb(197, 197, 197);
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;  /* or a fixed width like 1000px if needed */
+    border-radius: 20px;
+    margin: 20px auto; /* Center the section itself */
+
+}
+
+.complaintsection {
+    width: 60%;
+    margin: 0 auto; /* Center the container horizontally */
+    margin-top: 50px;
+}
+
+/* Modal Animations */
+@keyframes popup {
+    0% {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes popdown {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    font-size: 18px;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+    margin: 3% auto;
+    padding: 50px;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 700px;
+    animation: popup 0.3s ease-out;
+    max-height: 80vh; /* Limit height to 80% of screen */
+  overflow-y: auto; /* Add vertical scroll if needed */
+  }
+  
+
+#modalTitle {
+    text-align: center;
+}
+
+#requestForm label {
+    margin-top: 10px;
+    display: block;
+}
+
+#requestForm input, #requestForm select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#requestForm button {
+    font-size: 18px;
+    display: block;     
+    margin: 0 auto;  
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#requestForm button:hover {
+    background-color: #45a049;
+}
+
+.close {
+  color: #4e4e4e;
+  font-size: 32px;
+  font-weight: bold;
+  float: right;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(201, 17, 17);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.documents {
+  padding-top: 40px;
+}
+
+.documents img {
+    cursor: pointer;
+    width: 100px; /* Adjust the size */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.documents img:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #146b2e;
+    text-align: center;
+    padding: 16px;
+    color: #ffffff;
+    font-size: 14px;
+    border-top: 1px solid #e5e7eb;
+    z-index: 999;
+  }
+img{
+    width: 20px;
+    height: 20px;
+} 
+
+/* Profile Dropdown */
+.profile-dropdown {
+  width: 100%;
+}
+
+#profileBtn {
+  background-color: #146b2e;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 250px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  z-index: 100;
+}
+
+.dropdown-content p {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.logout-button {
+  background-color: #e11d48;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.logout-button:hover {
+  background-color: #b91c1c;
+}
+
+
+/* Login Button */
+.login-btn {
+  background-color: #146b2e;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.navbar-links a img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.navbar-links a:hover {
+  background-color: #329e26;
+  transform: scale(1.05);
+  border-radius: 10px;
+}
+
+#loginLink,
+#profileDropdown {
+  display: none; /* hide by default to prevent flicker */
+}
+/*BRO BRO ACE*/
+/*ANNOUCEMENT PAGE*/
+
+#requestForm textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+/* RESPONSIVE STYLES */
+@media (max-width: 1024px) {
+  .section,
+  .complaintsection {
+    width: 80%;
+  }
+
+  .steps,
+  .documents {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .step,
+  .document {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+  }
+
+  .navbar-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .navbar a {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .section,
+  .complaintsection {
+    width: 90%;
+  }
+
+  .step,
+  .document {
+    width: 100%;
+  }
+
+  .steps,
+  .documents {
+    margin: 20px 0;
+  }
+
+  .available {
+    margin: 0 20px 50px 20px;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .footer {
+    font-size: 12px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo {
+    font-size: 1.5rem;
+  }
+
+  .login-btn,
+  #profileBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .section,
+  .complaintsection {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  hr {
+    margin: 0 20px;
+  }
+
+  .document img {
+    width: 80px;
+  }
+
+  .dropdown-content {
+    min-width: 200px;
+  }
+}

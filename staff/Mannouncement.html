@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarangayDocs - Manage Announcements</title>
+    <link rel="stylesheet" href="mannaouncement.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth-compat.js"></script>
+
+    <script type="module" src="mannouncemnet.js"></script>  <!-- Link to your separate JS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  
+    <div class="navbar">
+        <h3 id="logo">BarangayDocs</h3>
+        <div class="navbar-links">
+   
+            <a href="Mrequest.html">Manage Requests</a>
+            <a href="Mcomplaints.html">Manage Complaints</a>
+            <a href="Mannouncement.html">Manage Announcements</a>
+        </div>
+        <div class="settings-icon">
+            <a href="settings.html"><i class="fas fa-cog"></i></a>
+        </div>
+    </div> 
+
+    <div class="container">
+        <div class="section">
+            <div class="header">
+            <h2>Manage Announcements</h2>
+           <!-- <p>This section will allow you to manage announcements for BarangayDocs.</p>--> 
+</div>
+        <!-- Add Announcement Form -->
+<form id="addAnnouncementForm" class="announcement-form">
+
+    
+    <h3 >Add New Announcement</h3>
+    <label for="announcementTitle">Title:</label>
+    <input type="text" id="announcementTitle" name="title" required placeholder="Enter title">
+    
+    <label for="announcementDescription">Description:</label>
+    <textarea id="announcementDescription" name="description" required placeholder="Enter description"></textarea>
+    <input type="file" id="announcementImage" accept="image/*"><br>
+    <button type="submit" id="addAnnouncementButton">Add Announcement</button>
+</form>
+
+<h2 >Announcements</h2>
+<div class="announcement-list" id="announcementList">
+    <!-- Dynamic announcements inserted here -->
+</div>
+
+              
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+      </footer>
+    
+</body>
+</html>
