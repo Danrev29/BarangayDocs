@@ -227,8 +227,8 @@ async function fetchUserRequests(userId) {
       const listItem = document.createElement("li");
       listItem.style.border = "1px solid #ccc";
       listItem.style.borderRadius = "8px";
-      listItem.style.padding = "2rem";
-      listItem.style.marginBottom = "2rem";
+      listItem.style.padding = "1rem";
+      listItem.style.marginBottom = "1rem";
       listItem.innerHTML = `
         <strong>Document Type:</strong> ${data.requestType.replace(/-/g, ' ').toUpperCase()}<br>
         <strong>Status:</strong> ${data.status}<br>
