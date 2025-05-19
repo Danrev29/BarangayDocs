@@ -201,3 +201,64 @@ if (toggleBtn && navbarLinks) {
     navbarLinks.classList.toggle('show');
   });
 }
+
+
+import { query, where, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
+
+async function fetchUserRequests(userId) {
+  const container = document.getElementById('myRequestsContainer');
+  container.innerHTML = "<p>Loading your requests...</p>";
+
+  try {
+    const q = query(collection(db, "documentRequests"), where("userId", "==", userId));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+      container.innerHTML = "<p>You have no document requests yet.</p>";
+      return;
+    }
+
+    const list = document.createElement("ul");
+    list.style.listStyle = "none";
+    list.style.padding = "0";
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const listItem = document.createElement("li");
+      listItem.style.border = "1px solid #ccc";
+      listItem.style.borderRadius = "8px";
+      listItem.style.padding = "2rem";
+      listItem.style.marginBottom = "2rem";
+      listItem.innerHTML = `
+        <strong>Document Type:</strong> ${data.requestType.replace(/-/g, ' ').toUpperCase()}<br>
+        <strong>Status:</strong> ${data.status}<br>
+        <strong>Date:</strong> ${data.createdAt?.toDate().toLocaleString() || 'Pending'}<br>
+        ${data.message ? `<strong>Message:</strong> ${data.message}<br>` : ""}
+        ${data.fileUrl ? `<a href="${data.fileUrl}" target="_blank">View Uploaded File</a><br>` : ""}
+      `;
+      list.appendChild(listItem);
+    });
+
+    container.innerHTML = "";
+    container.appendChild(list);
+  } catch (error) {
+    console.error("Error fetching user requests:", error);
+    container.innerHTML = "<p>❌ Failed to load requests.</p>";
+  }
+}
+
+// Call this inside the onAuthStateChanged block
+onAuthStateChanged(auth, (firebaseUser) => {
+  if (!firebaseUser) {
+    window.location.href = "login.html";
+  } else {
+    user = firebaseUser;
+    document.getElementById('userName').textContent = user.displayName || 'Name';
+    document.getElementById('userEmail').textContent = user.email || 'Email';
+    document.getElementById('profileDropdown').style.display = 'block';
+    document.getElementById('loginLink').style.display = 'none';
+
+    // ✅ Fetch user requests here
+    fetchUserRequests(user.uid);
+  }
+});
