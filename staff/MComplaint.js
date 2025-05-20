@@ -240,3 +240,18 @@ onAuthStateChanged(auth, (user) => {
     complaintsGrid.innerHTML = "<p>Please sign in to view complaints.</p>";
   }
 });
+
+async function deleteComplaint(complaintId, card) {
+  const confirmDelete = confirm("Are you sure you want to delete this complaint?");
+  if (!confirmDelete) return;
+
+  try {
+      await deleteDoc(doc(db, "complaints", complaintId));
+      card.remove(); // Remove the card from the UI
+      modal.style.display = "none"; // Close modal
+      alert("🗑️ Complaint successfully deleted.");
+  } catch (error) {
+      console.error("❌ Error deleting complaint:", error);
+      alert("❌ Failed to delete complaint.");
+  }
+}
