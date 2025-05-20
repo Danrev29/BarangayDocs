@@ -129,10 +129,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Redirect to login
-  if (loginBtn) {
-    loginBtn.addEventListener("click", () => {
-      window.location.href = "login.html";
-    });
-  }
+
 });
