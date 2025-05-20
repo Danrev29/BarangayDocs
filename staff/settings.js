@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       // Redirect to login if not authenticated
-      window.location.href = "/index.html";
+      window.location.href = "BarangayDocs/index.html";
     }
   });
 
@@ -121,7 +121,7 @@ document.addEventListener("click", async (e) => {
 
       await signOut(auth);
       alert("Logged out successfully!");
-      window.location.href = "/index.html";
+      window.location.href = "BarangayDocs/index.html";
     } catch (error) {
       alert("Logout failed: " + error.message);
     } finally {
