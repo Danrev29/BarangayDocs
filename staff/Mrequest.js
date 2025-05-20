@@ -55,66 +55,70 @@ async function fetchRequests() {
       rejectedTable.style.display = "table";
       approvedTable.style.display = "table";
 
-      let pendingIndex = 1;
-let approvedIndex = 1;
-let rejectedIndex = 1;
+      let approvedIndex = 1;
+      let rejectedIndex = 1;
+      let pendingRows = [];
 
-querySnapshot.forEach((docSnap) => {
-  const data = docSnap.data();
-  const tr = document.createElement("tr");
-  const id = docSnap.id;
+      const sortedDocs = querySnapshot.docs
+        .filter(doc => doc.data().createdAt)
+        .sort((a, b) => b.data().createdAt.toDate() - a.data().createdAt.toDate());
 
-  const timestamp = data.createdAt?.toDate();
-  const requestDate = timestamp 
-    ? `${timestamp.toLocaleDateString()} ${timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` 
-    : "N/A";
-  
+      sortedDocs.forEach((docSnap) => {
+        const data = docSnap.data();
+        const id = docSnap.id;
+        const tr = document.createElement("tr");
 
-  const statusClass = data.status === 'Approved' ? 'status-approved' :
-                      data.status === 'Rejected' ? 'status-rejected' :
-                      'status-processing';
+        const timestamp = data.createdAt?.toDate();
+        const requestDate = timestamp 
+          ? `${timestamp.toLocaleDateString()} ${timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` 
+          : "N/A";
 
-  let actionsHTML = "";
-  if (data.status !== "Rejected" && data.status !== "Approved") {
-    actionsHTML = `
-      <button class="approveBtn" data-id="${id}">Approve</button>
-      <button class="rejectBtn" data-id="${id}">Reject</button>
-    `;
-  }
+        const statusClass = data.status === 'Approved' ? 'status-approved' :
+                            data.status === 'Rejected' ? 'status-rejected' :
+                            'status-processing';
 
-  let index = 0;
-  if (data.status === "Rejected") {
-    index = rejectedIndex++;
-  } else if (data.status === "Approved") {
-    index = approvedIndex++;
-  } else {
-    index = pendingIndex++;
-  }
+        let actionsHTML = "";
+        if (data.status !== "Rejected" && data.status !== "Approved") {
+          actionsHTML = `
+            <button class="approveBtn" data-id="${id}">Approve</button>
+            <button class="rejectBtn" data-id="${id}">Reject</button>
+          `;
+        }
 
-  tr.innerHTML = `
-  <td data-label="No.">${index}</td>
-  <td data-label="Name">${data.fullName || ""}</td>
-  <td data-label="Document">${formatDocumentType(data.requestType)}</td>
-  <td data-label="Contact">${data.contactNumber || ""}</td>
-  <td data-label="Date of Birth">${data.birthDate || ""}</td>
-  <td data-label="Request Date">${requestDate}</td>
-  <td data-label="Status">
-    <span class="status-badge ${statusClass}">${data.status || "Processing"}</span>
-  </td>
-  <td data-label="Full Info">
-    <button class="viewBtn" data-id="${id}">View</button>
-  </td>
-  <td data-label="Actions">${actionsHTML}</td>
-`;
+        tr.innerHTML = `
+          <td data-label="No.">-</td>
+          <td data-label="Name">${data.fullName || ""}</td>
+          <td data-label="Document">${formatDocumentType(data.requestType)}</td>
+          <td data-label="Contact">${data.contactNumber || ""}</td>
+          <td data-label="Date of Birth">${data.birthDate || ""}</td>
+          <td data-label="Request Date">${requestDate}</td>
+          <td data-label="Status">
+            <span class="status-badge ${statusClass}">${data.status || "Processing"}</span>
+          </td>
+          <td data-label="Full Info">
+            <button class="viewBtn" data-id="${id}">View</button>
+          </td>
+          <td data-label="Actions">${actionsHTML}</td>
+        `;
 
-  if (data.status === "Rejected") {
-    rejectedTbody.appendChild(tr);
-  } else if (data.status === "Approved") {
-    approvedTbody.appendChild(tr);
-  } else {
-    requestsTbody.appendChild(tr);
-  }
-});
+        if (data.status === "Rejected") {
+          tr.querySelector("td:first-child").textContent = rejectedIndex++;
+          rejectedTbody.appendChild(tr);
+        } else if (data.status === "Approved") {
+          tr.querySelector("td:first-child").textContent = approvedIndex++;
+          approvedTbody.appendChild(tr);
+        } else {
+          // Add ID temporarily for reassignment later
+          tr.setAttribute("data-id", id);
+          pendingRows.push(tr);
+        }
+      });
+
+      // Reverse pending rows (newest first), then renumber and append
+      pendingRows.reverse().forEach((tr, index) => {
+        tr.querySelector("td:first-child").textContent = index + 1;
+        requestsTbody.appendChild(tr);
+      });
 
       attachViewListeners();
       attachActionListeners();
@@ -124,6 +128,7 @@ querySnapshot.forEach((docSnap) => {
     loadingMsg.textContent = "Failed to load document requests.";
   }
 }
+
 
 function formatDocumentType(type) {
   return type.replace(/-/g, ' ').toUpperCase();
@@ -245,18 +250,24 @@ async function rejectRequest(docId, userId, fullName, requestType) {
 }
 
 function moveToApprovedTable(requestId) {
+  const approvedTbody = document.querySelector("#approvedRequestsTable tbody");
   const row = document.querySelector(`[data-id="${requestId}"]`).closest('tr');
   row.querySelector("td:nth-child(7)").innerHTML = `<span class="status-badge status-approved">Approved</span>`;
   row.querySelector("td:last-child").innerHTML = "";
-  document.querySelector("#approvedRequestsTable tbody").appendChild(row);
+  approvedTbody.appendChild(row);
+  renumberTableRows(approvedTbody);
 }
 
+
 function moveToRejectedTable(requestId) {
+  const rejectedTbody = document.querySelector("#rejectedRequestsTable tbody");
   const row = document.querySelector(`[data-id="${requestId}"]`).closest('tr');
   row.querySelector("td:nth-child(7)").innerHTML = `<span class="status-badge status-rejected">Rejected</span>`;
   row.querySelector("td:last-child").innerHTML = "";
-  document.querySelector("#rejectedRequestsTable tbody").appendChild(row);
+  rejectedTbody.appendChild(row);
+  renumberTableRows(rejectedTbody);
 }
+
 
 function showDetailsModal(data) {
   const modal = document.getElementById("detailsModal");
@@ -323,3 +334,10 @@ document.querySelectorAll('.tab-btn').forEach(button => {
     document.getElementById(tabId).style.display = 'block';
   });
 });
+
+
+function renumberTableRows(tbody) {
+  Array.from(tbody.children).forEach((row, index) => {
+    row.querySelector("td:first-child").textContent = index + 1;
+  });
+}
