@@ -106,28 +106,31 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       // Redirect to login if not authenticated
-      window.location.href = "/login.html";
+      window.location.href = "/index.html";
     }
   });
 
   // Logout functionality
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", async () => {
-      const spinnerOverlay = document.getElementById("spinnerOverlay");
+  // Safe logout functionality
+document.addEventListener("click", async (e) => {
+  if (e.target && e.target.id === "logoutBtn") {
+    const spinnerOverlay = document.getElementById("spinnerOverlay");
 
-      try {
-        if (spinnerOverlay) spinnerOverlay.style.display = "flex";
+    try {
+      if (spinnerOverlay) spinnerOverlay.style.display = "flex";
 
-        await signOut(auth);
-        alert("Logged out successfully!");
-        window.location.href = "/login.html";
-      } catch (error) {
-        alert("Logout failed: " + error.message);
-      } finally {
-        if (spinnerOverlay) spinnerOverlay.style.display = "none";
-      }
-    });
+      await signOut(auth);
+      alert("Logged out successfully!");
+      window.location.href = "/index.html";
+    } catch (error) {
+      alert("Logout failed: " + error.message);
+    } finally {
+      if (spinnerOverlay) spinnerOverlay.style.display = "none";
+    }
   }
+});
 
 
+  // Redirect to login
+ 
 });
