@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - BarangayDocs</title>
+  <link rel="stylesheet" href="register.css" />
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+  <script type="module" src="register.js"></script>
+</head>
+<body>
+  <div class="navbar">
+  <div class="navbar-left">
+    <p class="navbar-logo">BarangayDocs</p>
+   <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+  </div>
+
+  <div class="navbar-links">
+    
+    <a href="index.html"><img src="img/home.png" alt="home" />Home</a>
+    <a href="register.html" id="requestLink"><img src="img/register.png" alt="register" />Register</a>
+<a href="login.html" id="loginLink" class="login-btn"><img src="img/login.png" alt="register" />Login</a>
+ 
+  </div>
+</div>
+</div><div class="register-container" id="registerForm">
+  <h2>Register</h2>
+<div class="tabs">
+  <button class="tab-button active" data-tab="basic">Basic Info</button>
+  <button class="tab-button" data-tab="address">Address Info</button>
+  <button class="tab-button" data-tab="parents">Parent Info</button>
+</div>
+<div class="tab-content active" id="basic">
+  <div class="form-column">
+    <label>Voters</label>
+<select id="voters" required>
+  <option value="" disabled selected>Select</option>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+
+
+   <label>Gender</label>
+<select id="gender" required>
+  <option value="" disabled selected>Select</option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+  <option value="Other">Other</option>
+</select>
+
+
+    <label>Date of Birth</label>
+    <input type="date" id="dob" required />
+
+    <label>Place of Birth</label>
+    <input type="text" id="pob" />
+
+    <label>PWD</label>
+<select id="pwd" required>
+  <option value="" disabled selected>Select</option>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+
+
+    <label>Single Parent</label>
+<select id="singleParent" required>
+  <option value="" disabled selected>Select</option>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+
+  </div>
+
+  <div class="form-column">
+    <label>First Name</label>
+    <input type="text" id="firstName" required />
+
+    <label>Middle Name</label>
+    <input type="text" id="middleName" />
+
+    <label>Last Name</label>
+    <input type="text" id="lastName" required />
+
+    <label>Suffix</label>
+<select id="suffix">
+  <option value="" selected disabled>Select</option>
+  <option value="Jr.">Jr.</option>
+  <option value="Sr.">Sr.</option>
+  <option value="II">II</option>
+  <option value="III">III</option>
+  <option value="IV">IV</option>
+  <option value="None">None</option>
+</select>
+
+
+ <label>Civil Status</label>
+<select id="civilStatus" required>
+  <option value="" disabled selected>Select</option>
+  <option value="Single">Single</option>
+  <option value="Married">Married</option>
+  <option value="Widowed">Widowed</option>
+  <option value="Separated">Separated</option>
+</select>
+
+
+    <label>Religion</label>
+    <input type="text" id="religion" />
+
+    <label>Nationality</label>
+    <input type="text" id="nationality" />
+  </div>
+</div>
+
+<div class="tab-content" id="address" style="margin-left: 170px; margin-right: 170px;">
+  <label style="margin-bottom: -12px;">House Number</label>
+  <input type="text" id="houseNumber" required />
+
+   <label style="margin-bottom: -12px;">Street Address</label>
+  <input type="text" id="streetAddress" required />
+
+   <label style="margin-bottom: -12px;">Barangay</label>
+  <input type="text" id="barangay" required />
+
+   <label style="margin-bottom: -12px;">Municipality</label>
+  <input type="text" id="municipality" required />
+
+   <label style="margin-bottom: -12px;">ZIP Code</label>
+  <input type="text" id="zipCode" required />
+
+  <label style="margin-bottom: -12px;">Contact Number</label>
+  <input type="tel" id="contactNumber" maxlength="11" required />
+</div>
+
+<div class="tab-content" id="parents" style="margin: 0 auto;">
+   <label style="margin-bottom: -12px;">Father's Name</label>
+  <input type="text" id="fatherName" required />
+
+  <label style="margin-bottom: -12px;">Mother's Name</label>
+  <input type="text" id="motherName" required />
+</div>
+
+<div class="full-width">
+  <label>Email</label>
+  <input type="email" id="email" required />
+
+  <label>Password</label>
+  <input type="password" id="password" required />
+  
+  <label>Retype Password</label>
+  <input type="password" id="confirmPassword" required />
+
+  <div id="password-requirements">
+    <p>Password must contain:</p>
+    <ul>
+      <li id="length" class="invalid">At least 8 characters</li>
+      <li id="uppercase" class="invalid">One uppercase letter</li>
+      <li id="number" class="invalid">One number</li>
+    </ul>
+  </div>
+
+  <button type="submit">Register</button>
+  <p class="register-link">Already have an account? <a href="login.html">Login here</a></p>
+</div>
+</div>
+
+  <footer class="footer">
+    <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+  </footer>
+</body>
+</html>

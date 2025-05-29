@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BarangayDocs - Manage Overview</title>
+  <link rel="stylesheet" href="Mrequest.css" />
+  <!-- Firebase and Firestore scripts -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+  <!-- Font Awesome for gear icon -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("O2dvKPhnqFENt2voB"); // Replace with your EmailJS public key
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="sidebar navbar">
+      <div class="nav-top">
+        <p class="navbar-logo">BarangayDocs</p>
+        <a href="admindashboard.html"><img src="/img/dashboard.png" alt="" /> Dashboard</a>
+        <a href="Mrequest.html"><img src="/img/docu.png" alt="" /> Requests</a>
+        <a href="Mcomplaints.html"><img src="/img/message.png" alt="" /> Complaints</a>
+        <a href="Mannouncement.html"><img src="/img/announce.png" alt="" /> Announcements</a>
+        <a href="residents.html"><img src="/img/profile.png" alt="" /> Residents</a>
+          <a href="manageMembers.html"><img src="/img/register.png" alt="">Manage Members</a>
+        <div class="settings-icon">
+          <a href="settings.html"><img src="/img/settings.png" alt="" /> Settings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-content" id="page-content">
+      <div class="content">
+
+        <div id="detailsModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="closeModalBtn" class="close">&times;</span>
+    <h2>Request Details</h2>
+    <div id="modalBody"></div>
+  </div>
+</div>
+        
+        <div class="container">
+          <div class="section">
+            <h2>Manage Requests</h2>
+
+            <button class="tab-btn active" data-tab="allRequestsSection">Pending</button>
+            <button class="tab-btn" data-tab="approvedRequestsSection">Approved</button>
+            <button class="tab-btn" data-tab="rejectedRequestsSection">Rejected</button>
+
+            <!-- All Requests Tab -->
+            <div id="allRequestsSection" class="tab-content" style="display: block;">
+              <div id="loadingMsg">Loading document requests...</div>
+              <h3 style="padding-top: 20px;">Pending Requests</h3>
+              <table id="requestsTable">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Document</th>
+                    <th>Request Date</th>
+                    <th>Status</th>
+                    <th>Info</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <div id="emptyMsg" style="display:none;">No requests found.</div>
+            </div>
+
+            <!-- Approved Tab -->
+            <div id="approvedRequestsSection" class="tab-content" style="display: none;">
+              <h3 style="color: green; padding-top: 20px;">Approved Requests</h3>
+              <table id="approvedRequestsTable">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Full Name</th>
+                    <th>Document Type</th>
+                    <th>Birth Date</th>
+                    <th>Request Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <!-- Rejected Tab -->
+            <div id="rejectedRequestsSection" class="tab-content" style="display: none;">
+              <h3 style="color: red; padding-top: 20px;">Rejected Requests</h3>
+              <table id="rejectedRequestsTable">
+                <thead>
+                  <tr>
+                <th>No.</th>
+                    <th>Full Name</th>
+                    <th>Document Type</th>
+                    <th>Birth Date</th>
+                    <th>Request Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="Mrequest.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Notifications | BarangayDocs</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="loading.css" />
+  <link rel="stylesheet" href="notifications.css" />
+
+  <!-- Firebase SDK -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js"></script>
+
+  <!-- Custom Scripts -->
+  <script type="module" src="dashboard.js"></script>
+</head>
+<body class="loading">
+  <!-- Loading Screen -->
+  <div id="loadingScreen">
+    <div class="spinner"></div>
+  </div>
+
+     <!-- Top Navbar for Mobile -->
+<div class="mobile-navbar">
+  <p class="navbar-logo">BarangayDocs</p>
+  <button class="burger-btn" onclick="toggleMobileMenu()">☰</button>
+</div>
+
+<!-- Collapsible Menu for Mobile -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="request.html">Request</a>
+  <a href="announce.html">Announcements</a>
+  <a href="complaint.html">Complaint</a>
+  <a href="officials.html">Barangay Officials</a>
+  <a href="notifications.html">Notifications</a>
+  <a href="profile.html">Profile</a>
+  <button onclick="logout()" class="mobile-logout">Logout</button>
+</div>
+
+  <!-- Main Page Content -->
+  <main id="pageContent" style="display: none;">
+    <div class="main-container">
+      
+      <!-- Sidebar -->
+      <div class="sidebar navbar">
+        <div class="nav-top">
+          <p class="navbar-logo">BarangayDocs</p>
+   <a href="dashboard.html"><img src="img/dashboard.png" alt="home" />Dashboard</a>
+      <a href="officials.html"><img src="img/profile.png" alt="profile" />Barangay Officials</a>
+      <a href="request.html" id="requestLink"><img src="img/docu.png" alt="request" />Request</a>
+      <a href="announce.html"><img src="img/announce.png" alt="announcements" />Announcements</a>
+      <a href="complaint.html" id="complaintLink"><img src="img/message.png" alt="complaint" /> Complaint</a>
+      <a href="notifications.html"><img src="img/notif.png" alt="notif" />Notifications</a>
+      <a href="profile.html"><img src="img/profile.png" alt="profile" />Profile</a>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="logout-btn">
+          <button onclick="logout()">
+            <img src="img/logout.png" alt="logout" />Logout
+          </button>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="content">
+          <div class="container">
+            <h1>🔔 Notifications</h1>
+            <div id="notificationsList" class="notifications-list">
+              <p>Loading...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <!-- Notifications Script -->
+  <script type="module" src="notifications.js"></script>
+
+  <script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('show');
+  }
+</script>
+
+</body>
+</html>

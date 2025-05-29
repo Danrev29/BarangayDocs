@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f3f4f6;
+}
+
+ .navbar {
+    background: #2b2b2b;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+ 
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .navbar-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  
+  .navbar a:hover {
+    background-color: #329e26;
+    transform: scale(1.05);
+  }
+  
+  .navbar-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+  @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar-toggle {
+        display: block;
+      }
+
+      .navbar-links {
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+      }
+
+      .navbar-links.show {
+        max-height: 500px; /* large enough for all links */
+      }
+
+      .navbar a {
+        width: 100%;
+        text-align: left;
+      }
+    }
+
+.logo {
+  font-size: 40px;
+  color: #fff;
+}
+
+.register-container {
+  max-width: 1100px;
+  margin: 80px auto 80px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+
+h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #000000;
+}
+
+h3 {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+}
+
+.form-column {
+  flex: 1;
+  min-width: 500px;
+}
+
+.full-width {
+  width: 50%;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  background-color: #146b2e;
+  color: rgb(255, 255, 255);
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0a471d;
+}
+
+.register-link {
+  text-align: center;
+  color: #000000;
+  padding-top: 20px;
+}
+
+.register-link a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.footer {
+  
+  bottom: 0;
+  width: 100%;
+  background-color: #146b2e;
+  text-align: center;
+  padding: 16px;
+  color: #ffffff;
+  font-size: 14px;
+  z-index: 999;
+}
+
+/* Capitalize all inputs by default */
+input[type="text"], input[type="date"] {
+  text-transform: uppercase;
+}
+
+/* Exclude email and password fields from being capitalized */
+input[type="email"],
+input[type="password"],
+input#confirmPassword {
+  text-transform: none;
+}
+
+#password-requirements {
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 16px;
+  color: #374151;
+}
+
+#password-requirements ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#password-requirements li {
+  margin: 6px 0;
+  transition: color 0.3s ease;
+}
+
+#password-requirements li.valid {
+  color: #16a34a; /* green */
+  transition: all 0.3s ease;
+}
+
+#password-requirements li.invalid {
+  color: #dc2626; /* red */
+  transition: all 0.3s ease;
+}
+
+#password-requirements li.valid::before {
+  content: "✅ ";
+}
+
+#password-requirements li.invalid::before {
+  content: "❌ ";
+}
+
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  margin: 0 auto;
+  width: 600px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background-color: #d1d5db;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.tab-button.active {
+  background-color: #146b2e;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-content.active {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+ 
+}
+
+input.error, select.error {
+  border: 2px solid red;
+}

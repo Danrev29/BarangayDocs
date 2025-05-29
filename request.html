@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarangayDocs</title>
+    <link rel="stylesheet" href="request.css">
+    <link rel="stylesheet" href="loading.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+    <script type="module" src="request.js"></script>
+    <script type="module" src="dashboard.js"></script>
+</head>
+
+<body class="loading">
+    <div id="loadingScreen">
+      <div class="spinner"></div>
+    </div>
+
+       <!-- Top Navbar for Mobile -->
+<div class="mobile-navbar">
+  <p class="navbar-logo">BarangayDocs</p>
+  <button class="burger-btn" onclick="toggleMobileMenu()">☰</button>
+</div>
+
+<!-- Collapsible Menu for Mobile -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="request.html">Request</a>
+  <a href="announce.html">Announcements</a>
+  <a href="complaint.html">Complaint</a>
+  <a href="officials.html">Barangay Officials</a>
+  <a href="notifications.html">Notifications</a>
+  <a href="profile.html">Profile</a>
+  <button onclick="logout()" class="mobile-logout">Logout</button>
+</div>
+
+  
+    <main id="pageContent" style="display: none;">
+
+   <div class="main-container">
+    <div class="sidebar navbar">
+      <div class="nav-top">
+      <p class="navbar-logo">BarangayDocs</p>
+     <a href="dashboard.html"><img src="img/dashboard.png" alt="home" />Dashboard</a>
+      <a href="officials.html"><img src="img/profile.png" alt="profile" />Barangay Officials</a>
+      <a href="request.html" id="requestLink"><img src="img/docu.png" alt="request" />Request</a>
+      <a href="announce.html"><img src="img/announce.png" alt="announcements" />Announcements</a>
+      <a href="complaint.html" id="complaintLink"><img src="img/message.png" alt="complaint" /> Complaint</a>
+      <a href="notifications.html"><img src="img/notif.png" alt="notif" />Notifications</a>
+      <a href="profile.html"><img src="img/profile.png" alt="profile" />Profile</a>
+    </div>
+
+    <div class="logout-btn">
+     <button onclick="logout()"><img src="img/logout.png" alt="logout">Logout</button>
+    </div>
+    </div>
+
+
+<div class="page-content">
+     <div class="content">
+    <div class="container">
+        <div class="section">
+            <h2>Request your Document now</h2><br>
+            <p>Need a Barangay Clearance, Barangay Permit, Certificate of Indigency, or other documents? Request them online here and get notified when they are ready.</p>
+        </div>
+        
+        <div class="how-it-works">
+            <h2>How it Works</h2>
+            <p>Get started with these 3 easy steps:</p>
+        </div>
+        
+        <div class="steps">
+            <div class="step">
+                <h1> 1</h1><h3> Document Request</h3><br>
+                <p>The user logs in, selects the document, fills out the form, and submits the request.</p>
+            </div>
+            <div class="step">
+                <h1>2</h1><h3> Processing & Approval</h3><br>
+                <p>Barangay staff reviews, verifies, and processes the request. Once approved, the system will notify the user.</p>
+            </div>
+            <div class="step">
+                <h1>3</h1><h3> Pickup & Pay</h3><br>
+                <p>The user visits the Barangay office to pick up the document.</p>
+            </div>
+        </div>
+        </div>
+        <hr>
+        <br>
+<h3>Choose Document</h3>
+        <div class="available">
+            
+
+           <div class="documents">
+<h3 style="font-size: 1.5rem; margin: 40px 5px 0px 0px ;">Click This:</h3>
+  <img src="img/672d666a-f47b-44ba-aaae-73669305d9c1-removebg-preview.png" alt="Certificate of Good Moral" class="document-img" data-doc="barangay-certificate">
+  <button id="openRequestsModalBtn">📄 View My Requests</button>
+</div>
+
+  </div>
+  
+            <!-- Modal -->
+<!-- Request Modal -->
+<!-- Modal (Vanilla JS, not Bootstrap) -->
+<div id="requestModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modalTitle">Submit Request</h2>
+    <form id="requestForm" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="requestType">Document Type</label>
+      <select id="documentTypeDropdown">
+  <option value="barangay-clearance">Barangay Clearance</option>
+  <option value="certificate-of-residency">Certificate of Residency</option>
+  <option value="certificate-of-indigency">Certificate of Indigency</option>
+  <option value="barangay-permit">Barangay Business Permit</option>
+  <option value="barangay-certificate">Barangay Certificate</option>
+</select>
+
+
+      </div>
+
+     <div class="form-group">
+  <label for="validId">Upload Valid ID (any government-issued ID)</label>
+  <p>Front:</p>
+  <input type="file" id="validId" accept="image/*,application/pdf" required />
+  <p>Back:</p>
+  <input type="file" id="validIdBack" accept="image/*,application/pdf" required />
+</div>
+
+
+     
+      <div id="additionalFields"></div>
+
+      <div class="form-footer">
+        <button type="submit">Submit Request</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  
+
+</div>
+
+
+<!-- My Requests Modal -->
+<div id="myRequestsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeRequestsModal">&times;</span>
+    <h2 style="text-align: center;">My Requests</h2>
+    <div id="myRequestsContainer"></div>
+  </div>
+</div>
+
+
+
+<footer class="footer">
+    <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+  </footer>
+</div>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('show');
+  }
+</script>
+
+</body>
+</html>

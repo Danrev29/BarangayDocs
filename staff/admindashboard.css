@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Layout */
+.main-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.page-content {
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
+}
+
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.sidebar a img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.sidebar a:hover {
+  background-color: #329e26;
+  transform: scale(1.05);
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+ h1 {
+    margin-top: 30px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+      background-color: white;
+      padding: 50px;
+      border-radius: 12px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .card h2 {
+      margin: 0;
+      font-size: 2em;
+      color: #007bff;
+    }
+    .card p {
+      margin-top: 10px;
+      color: #555;
+    }
+
+    .total-users { background-color: #eeeded; }
+.total-male { background-color: #d0eaff; }
+.total-female { background-color: #ffd8e4; }
+.total-single-parents { background-color: #ffe4b3; }
+.total-voters { background-color: #e6ffcc; }
+.total-pwd { background-color: #e0d4fd; }
+.total-archived { background-color: #fcd5ce; }
+.total-request {background-color: aquamarine;}
+.total-complaints {background-color: antiquewhite;}
+
+.dashboard-piecharts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.card canvas {
+  max-width: 100%;
+  height: 300px;
+}
+
+
+
+
+.officials-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.barangay-members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 20px;
+  margin: 30px auto;
+  max-width: 1200px;
+}
+
+#captainGrid {
+  display: flex;
+  justify-content: center; /* centers items horizontally */
+  flex-wrap: wrap; /* if you have multiple captains, they wrap nicely */
+  gap: 1rem; /* optional spacing between cards */
+}
+
+#skChairmanGrid {
+   display: flex;
+  justify-content: center; /* centers items horizontally */
+  flex-wrap: wrap; /* if you have multiple captains, they wrap nicely */
+  gap: 1rem; /* optional spacing between cards */
+}
+
+#skTreasurerGrid {
+   display: flex;
+  justify-content: center; /* centers items horizontally */
+  flex-wrap: wrap; /* if you have multiple captains, they wrap nicely */
+  gap: 1rem; /* optional spacing between cards */
+}
+
+#skSecretaryGrid {
+   display: flex;
+  justify-content: center; /* centers items horizontally */
+  flex-wrap: wrap; /* if you have multiple captains, they wrap nicely */
+  gap: 1rem; /* optional spacing between cards */
+}
+
+
+#othersGrid {
+  display: flex;
+  justify-content: center; /* centers the cards horizontally */
+  gap: 1rem; /* spacing between cards if more than one */
+  flex-wrap: wrap; /* allows wrapping if more cards appear */
+}
+
+
+
+.barangay-member-card {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  /* ✅ Removed grid display here */
+}
+
+
+.barangay-member-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid #000000;
+}
+

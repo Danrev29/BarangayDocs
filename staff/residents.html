@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BarangayDocs - Manage Complaints</title>
+  <link rel="stylesheet" href="residents.css">
+ 
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+</head>
+<body>
+  
+  <div class="main-container">
+    <div class="sidebar navbar">
+      <div class="nav-top">
+      <p class="navbar-logo">BarangayDocs</p>
+      <a href="admindashboard.html"><img src="/img/dashboard.png" alt=""> Dashboard</a>
+      <a href="Mrequest.html"><img src="/img/docu.png" alt=""> Requests</a>
+      <a href="Mcomplaints.html"><img src="/img/message.png" alt=""> Complaints</a>
+      <a href="Mannouncement.html"><img src="/img/announce.png" alt=""> Announcements</a>
+       <a href="residents.html"> <img src="/img/profile.png" alt="">Residents</a>
+         <a href="manageMembers.html"><img src="/img/register.png" alt="">Manage Members</a>
+      <a href="settings.html"><img src="/img/settings.png" alt="">Settings</a>
+    </div>
+    </div>
+<div class="page-content">
+     <div class="content">
+  <div class="container">
+    <div class="section" style="position: relative; display: flex; align-items: center; justify-content: space-between;">
+  <h2 style="margin: 0;">Registered Residents</h2>
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search residents..."
+    style="padding: 8px 12px; font-size: 14px; width: 250px; border-radius: 4px; border: 1.5px solid #ccc;"
+  />
+</div>
+
+<button id="openArchivedModal" style="margin-bottom: 10px;">View Archived Residents</button>
+
+
+       <table id="residentsTable">
+ <thead>
+  <tr>
+    <th>No.</th>       <!-- numbering -->
+    <th>Photo</th>     <!-- NEW column for photo -->
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Action</th>
+  </tr>
+</thead>
+
+  <tbody id="residentsBody">
+    <!-- Rows go here -->
+  </tbody>
+</table>
+
+
+  <!-- Modal for detailed info -->
+ <div id="residentInfoModal" class="modal resident-modal">
+  <div class="modal-content resident-modal-content">
+    <span id="residentCloseModal" class="close resident-close">&times;</span>
+    <div id="profileImageContainer" style="text-align:center; margin-bottom: 1rem;">
+ <img id="profileImage" alt="Profile" />
+ <div ><button id="changePhotoBtn" >Change Photo</button></div>
+
+<input type="file" id="uploadInput" accept="image/*" style="display: none;" />
+
+</div>
+
+    <h2>Resident Information</h2>
+
+    <p><strong>Name:</strong> <span id="resName"></span></p>
+    <p><strong>Email:</strong> <span id="resEmail"></span></p>
+    <p><strong>Phone:</strong> <span id="resPhone"></span></p>
+    <p><strong>Gender:</strong> <span id="resGender"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="resDOB"></span></p>
+    <p><strong>Place of Birth:</strong> <span id="resPOB"></span></p>
+    <p><strong>Voter Status:</strong> <span id="resVoter"></span></p>
+    <p><strong>PWD:</strong> <span id="resPWD"></span></p>
+    <p><strong>Single Parent:</strong> <span id="resSingleParent"></span></p>
+    <p><strong>Civil Status:</strong> <span id="resCivilStatus"></span></p>
+    <p><strong>Religion:</strong> <span id="resReligion"></span></p>
+    <p><strong>Nationality:</strong> <span id="resNationality"></span></p>
+
+    <h3 class="collapsible">Address ▼</h3>
+    <div class="content" style="display:none;">
+      <p><strong>House No.:</strong> <span id="resHouseNo"></span></p>
+      <p><strong>Street:</strong> <span id="resStreet"></span></p>
+      <p><strong>Barangay:</strong> <span id="resBarangay"></span></p>
+      <p><strong>Municipality:</strong> <span id="resMunicipality"></span></p>
+      <p><strong>ZIP Code:</strong> <span id="resZip"></span></p>
+    </div>
+
+    <h3 class="collapsible">Family ▼</h3>
+    <div class="content" style="display:none;">
+      <p><strong>Father's Name:</strong> <span id="resFather"></span></p>
+      <p><strong>Mother's Name:</strong> <span id="resMother"></span></p>
+    </div>
+
+    <h3 id="docRequestsHeader" class="collapsible">Documents Requested ▼</h3>
+<div class="content" style="display: none;">
+  <table id="docRequests" class="sub-table resident-sub-table"></table>
+</div>
+
+<h3 id="complaintsHeader" class="collapsible">Complaints Submitted ▼</h3>
+<div class="content" style="display: none;">
+  <table id="complaints" class="sub-table resident-sub-table"></table>
+</div>
+
+ <div style="margin-top: 20px;">
+  <button id="editResidentBtn">Edit</button>
+  <button id="saveResidentBtn" style="display: none;">Save Changes</button>
+</div>
+  </div>
+ 
+
+</div>
+
+
+<div id="archivedModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:999;">
+  <div style="background:white; padding:20px; max-height:80%; overflow-y:auto; width:80%; border-radius:8px;">
+    <h2>Archived Residents</h2>
+    <button id="closeArchivedModal" style="float:right;">Close</button>
+    <table border="1" width="100%" style="margin-top: 20px;">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Action</th> <!-- Added for Unarchive button -->
+    </tr>
+  </thead>
+  <tbody id="archivedBody">
+    <!-- Populated via JS -->
+  </tbody>
+</table>
+
+  </div>
+</div>
+
+
+      
+</div>
+
+ 
+</div>
+  
+  </div>
+  </div>
+  <!-- Scripts -->
+  <script type="module" src="residents.js"></script>
+
+</body>
+</html>

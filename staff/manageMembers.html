@@ -1,0 +1,387 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manage Barangay Members</title>
+  <style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+    body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+
+}
+
+/* Layout */
+.main-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.page-content {
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
+  padding: 50px;
+}
+
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.sidebar a img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.sidebar a:hover {
+  background-color: #329e26;
+  transform: scale(1.05);
+}
+  
+    h1 { margin-bottom: 20px; }
+    form { margin-bottom: 40px; background:#f9f9f9; padding:20px; border-radius:8px; }
+    label { display:block; margin-top: 15px; }
+    input[type="text"], input[type="file"], select { width: 100%; padding: 8px; margin-top:5px; }
+    button { margin-top: 15px; padding: 10px 20px; background:#007bff; border:none; color:white; cursor:pointer; border-radius: 4px; }
+    button:disabled { background: #aaa; cursor: not-allowed; }
+    .member-list { margin-top: 30px; }
+    .member-item { border-bottom: 1px solid #ccc; padding: 10px 0; display: flex; align-items: center; }
+    .member-photo { width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 15px; }
+    .member-info { flex-grow: 1; }
+    .member-actions button { margin-left: 10px; background:#dc3545; }
+    .member-actions button.edit { background: #28a745; }
+    .back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background-color: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+.header-inline {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.header-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  padding: 10px 16px;
+  margin-top: 25px;
+  background-color: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+
+  </style>
+</head>
+<div class="main-container">
+    <div class="sidebar navbar">
+      <div class="nav-top">
+      <p class="navbar-logo">BarangayDocs</p>
+       <a href="admindashboard.html"><img src="/img/dashboard.png" alt=""> Dashboard</a>
+      <a href="Mrequest.html"><img src="/img/docu.png" alt=""> Requests</a>
+      <a href="Mcomplaints.html"><img src="/img/message.png" alt=""> Complaints</a>
+      <a href="Mannouncement.html"><img src="/img/announce.png" alt=""> Announcements</a>
+       <a href="residents.html"> <img src="/img/profile.png" alt="">Residents</a>
+       <a href="manageMembers.html"><img src="/img/register.png" alt="">Manage Members</a>
+      <a href="settings.html"><img src="/img/settings.png" alt="">Settings</a>
+
+    </div>
+    </div>
+<div class="page-content">
+     <div class="content">
+
+<div class="header-inline">
+  <h1>Manage Barangay Members</h1>
+  <a href="admindashboard.html" class="back-button">← Back to Dashboard</a>
+</div>
+
+
+
+  <form id="memberForm">
+    <input type="hidden" id="memberId" />
+    <label>
+      Name
+      <input type="text" id="name" required />
+    </label>
+<label>
+  Position
+  <select id="position" required>
+    <option value="" disabled selected>Select position</option>
+    <option value="Barangay Captain">Barangay Captain</option>
+    <option value="Kagawad">Kagawad</option>
+    <option value="Treasurer">Treasurer</option>
+    <option value="Secretary">Secretary</option>
+    <option value="SK Chairman">SK Chairman</option>
+    <option value="SK Kagawad">SK Kagawad</option>
+    <option value="SK Treasurer">SK Treasurer</option>
+    <option value="SK Secretary">SK Secretary</option>
+  </select>
+</label>
+
+    <label>
+      Photo (optional)
+      <input type="file" id="photo" accept="image/*" />
+    </label>
+    <button type="submit" id="submitBtn">Add Member</button>
+    <button type="button" id="cancelEditBtn" style="display:none; margin-left: 10px;">Cancel Edit</button>
+  </form>
+
+  <div class="member-list" id="memberList">
+    <!-- Members will load here -->
+  </div>
+</div>
+</div>
+</div>
+  <!-- Firebase Modular SDK -->
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc, updateDoc, doc, deleteDoc, getDocs, orderBy, query, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCDUhreZ5WL2E6PEV_dn8I1oW68HLQyy88",
+    authDomain: "barangaydocs-a4533.firebaseapp.com",
+    projectId: "barangaydocs-a4533",
+    storageBucket: "barangaydocs-a4533.appspot.com",
+    messagingSenderId: "19682468687",
+    appId: "1:19682468687:web:373002e9e37df2120f1b3a",
+    measurementId: "G-CC1ZGLF3W5"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+
+  const CLOUDINARY_UPLOAD_PRESET = "unsigned_preset"; // Replace with your actual preset
+  const CLOUDINARY_CLOUD_NAME = "dv6kpdk7n";       // Replace with your actual cloud name
+
+  const memberForm = document.getElementById("memberForm");
+  const memberList = document.getElementById("memberList");
+  const submitBtn = document.getElementById("submitBtn");
+  const cancelEditBtn = document.getElementById("cancelEditBtn");
+
+  let editMode = false;
+  let editMemberId = null;
+
+  onAuthStateChanged(auth, user => {
+    if (!user) {
+      alert("Please login as admin to access this page.");
+    } else {
+      loadMembers();
+    }
+  });
+
+  memberForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = editMode ? "Updating..." : "Adding...";
+
+    const name = document.getElementById("name").value.trim();
+    const position = document.getElementById("position").value;
+    const photoFile = document.getElementById("photo").files[0];
+
+    let photoURL = "";
+
+    try {
+      if (photoFile) {
+        const formData = new FormData();
+        formData.append("file", photoFile);
+        formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error("Cloudinary upload error:", errorData);
+          alert("Image upload failed: " + (errorData.error?.message || "Unknown error"));
+          submitBtn.disabled = false;
+          submitBtn.textContent = editMode ? "Update Member" : "Add Member";
+          return;
+        }
+
+        const data = await response.json();
+        photoURL = data.secure_url;
+      }
+
+      if (editMode && editMemberId) {
+        const memberRef = doc(db, "barangayMembers", editMemberId);
+        const updateData = { name, position };
+        if (photoURL) updateData.photoURL = photoURL;
+        await updateDoc(memberRef, updateData);
+        alert("Member updated successfully.");
+      } else {
+        await addDoc(collection(db, "barangayMembers"), {
+          name,
+          position,
+          photoURL,
+          createdAt: serverTimestamp(),
+        });
+        alert("Member added successfully.");
+      }
+
+      memberForm.reset();
+      editMode = false;
+      editMemberId = null;
+      submitBtn.textContent = "Add Member";
+      cancelEditBtn.style.display = "none";
+
+      loadMembers();
+
+    } catch (error) {
+      console.error("Error saving member:", error);
+      alert("Error occurred. Check console.");
+    }
+
+    submitBtn.disabled = false;
+  });
+
+  cancelEditBtn.addEventListener("click", () => {
+    editMode = false;
+    editMemberId = null;
+    memberForm.reset();
+    submitBtn.textContent = "Add Member";
+    cancelEditBtn.style.display = "none";
+  });
+
+  async function loadMembers() {
+    memberList.innerHTML = "Loading...";
+
+    try {
+      const q = query(collection(db, "barangayMembers"), orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
+
+      memberList.innerHTML = "";
+      if (snapshot.empty) {
+        memberList.innerHTML = "<p>No members found.</p>";
+        return;
+      }
+
+      snapshot.forEach(docSnap => {
+        const member = docSnap.data();
+        const memberId = docSnap.id;
+
+        const div = document.createElement("div");
+        div.classList.add("member-item");
+
+        div.innerHTML = `
+        <img 
+  src="${member.photoURL || '/img/default-profile.png'}" 
+  alt="${member.name}" 
+  class="member-photo" 
+  onerror="this.onerror=null; this.src='/img/default-profile.png';" 
+/>
+
+
+          <div class="member-info">
+            <div><strong>${member.name}</strong></div>
+            <div>${member.position}</div>
+          </div>
+          <div class="member-actions">
+            <button class="edit" data-id="${memberId}">Edit</button>
+            <button class="delete" data-id="${memberId}">Delete</button>
+          </div>
+        `;
+
+        memberList.appendChild(div);
+      });
+
+      document.querySelectorAll(".edit").forEach(btn => {
+        btn.addEventListener("click", async (e) => {
+          const id = e.target.dataset.id;
+          const docSnap = await getDoc(doc(db, "barangayMembers", id));
+          if (!docSnap.exists()) return alert("Member not found");
+          const data = docSnap.data();
+
+          editMode = true;
+          editMemberId = id;
+          document.getElementById("name").value = data.name;
+          document.getElementById("position").value = data.position;
+          submitBtn.textContent = "Update Member";
+          cancelEditBtn.style.display = "inline-block";
+        });
+      });
+
+      document.querySelectorAll(".delete").forEach(btn => {
+        btn.addEventListener("click", async (e) => {
+          const id = e.target.dataset.id;
+          if (confirm("Delete this member?")) {
+            await deleteDoc(doc(db, "barangayMembers", id));
+            alert("Member deleted.");
+            loadMembers();
+          }
+        });
+      });
+
+    } catch (error) {
+      console.error("Error loading members:", error);
+      memberList.innerHTML = "<p>Error loading members.</p>";
+    }
+  }
+  </script>
+
+</body>
+</html>

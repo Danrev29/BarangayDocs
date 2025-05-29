@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admindashboard.css" />
+  <script type="module" src="admindashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+ <div class="main-container">
+    <div class="sidebar navbar">
+      <div class="nav-top">
+      <p class="navbar-logo">BarangayDocs</p>
+       <a href="admindashboard.html"><img src="/img/dashboard.png" alt=""> Dashboard</a>
+      <a href="Mrequest.html"><img src="/img/docu.png" alt=""> Requests</a>
+      <a href="Mcomplaints.html"><img src="/img/message.png" alt=""> Complaints</a>
+      <a href="Mannouncement.html"><img src="/img/announce.png" alt=""> Announcements</a>
+       <a href="residents.html"> <img src="/img/profile.png" alt="">Residents</a>
+       <a href="manageMembers.html"><img src="/img/register.png" alt="">Manage Members</a>
+      <a href="settings.html"><img src="/img/settings.png" alt="">Settings</a>
+
+    </div>
+    </div>
+<div class="page-content">
+     <div class="content">
+  <div class="dashboard-container">
+    <h1>Admin Dashboard</h1>
+<div class="dashboard-grid">
+<div class="card total-users"><h2 id="totalUsers">0</h2><p>Total Users</p></div>
+<div class="card total-archived"><h2 id="totalArchived">0</h2><p>Archived Users</p></div>
+<div class="card total-male"><h2 id="totalMale">0</h2><p>Total Males</p></div>
+<div class="card total-female"><h2 id="totalFemale">0</h2><p>Total Females</p></div>
+<div class="card total-single-parents"><h2 id="totalSingleParents">0</h2><p>Single Parents</p></div>
+<div class="card total-voters"><h2 id="totalVoters">0</h2><p>Voters</p></div>
+<div class="card total-pwd"><h2 id="totalPWD">0</h2><p>PWD</p></div>
+<div class="card total-request"><h2 id="totalRequests">0</h2><p>Total Document Requests</p></div>
+<div class="card total-complaints"><h2 id="totalComplaints">0</h2><p>Total Complaints</p></div>
+
+
+</div>
+<div class="dashboard-piecharts">
+  <div class="card"><canvas id="genderPieChart"></canvas></div>
+  <div class="card"><canvas id="voterPieChart"></canvas></div>
+  <div class="card"><canvas id="pwdPieChart"></canvas></div>
+  <div class="card"><canvas id="singleParentPieChart"></canvas></div>
+  
+</div>
+
+<div class="officials-container">
+  <h2>Barangay Officials</h2>
+
+  <div class="position-section">
+    <h3>Barangay Captain</h3>
+    <div class="barangay-members-grid" id="captainGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>Kagawad</h3>
+    <div class="barangay-members-grid" id="kagawadGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>Secretary & Treasurer</h3>
+    <div class="barangay-members-grid" id="othersGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>SK Chairman</h3>
+    <div class="barangay-members-grid" id="skChairmanGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>SK Kagawads</h3>
+    <div class="barangay-members-grid" id="skKagawadGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>SK Secretary</h3>
+    <div class="barangay-members-grid" id="skSecretaryGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>SK Treasurer</h3>
+    <div class="barangay-members-grid" id="skTreasurerGrid"></div>
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+  </div>
+  </div>
+  </div>
+</div>
+</body>
+</html>

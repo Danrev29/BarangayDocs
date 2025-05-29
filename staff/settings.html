@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarangayDocs - Settings</title>
+    <link rel="stylesheet" href="settings.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+    <!-- Font Awesome for the Gear icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+
+    <script type="module" src="settings.js"></script>
+
+</head>
+<body>
+    <!-- Navbar with logo and other links -->
+    <div class="main-container">
+    <div class="sidebar navbar">
+      <div class="nav-top">
+      <p class="navbar-logo">BarangayDocs</p>
+      <a href="admindashboard.html"><img src="/img/dashboard.png" alt=""> Dashboard</a>
+      <a href="Mrequest.html"><img src="/img/docu.png" alt=""> Requests</a>
+      <a href="Mcomplaints.html"><img src="/img/message.png" alt=""> Complaints</a>
+      <a href="Mannouncement.html"><img src="/img/announce.png" alt=""> Announcements</a>
+       <a href="residents.html"> <img src="/img/profile.png" alt="">Residents</a>
+         <a href="manageMembers.html"><img src="/img/register.png" alt="">Manage Members</a>
+       <div class="settings-icon">
+      <a href="settings.html"><img src="/img/settings.png" alt="">Settings</a>
+    </div>
+    </div>
+
+
+    </div>
+<div class="page-content">
+     <div class="content">
+
+    <div class="container">
+        <div class="section">
+            <h2>Settings</h2>
+           
+            <!-- Additional content for managing settings goes here -->
+        </div>
+    </div>
+    <div class="profile-wrapper">
+        <div class="profile-card">
+          <h3>Admin Profile</h3>
+        <img id="profilePhoto" src="default-avatar.png" alt="Profile Photo" width="100" />
+<input type="file" id="photoUpload" accept="image/*" style="display: none;" />
+<div><button id="uploadPhotoBtn">Upload Photo</button></div>
+
+          <div class="admin-details">
+            <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+          </div>
+        </div>
+      </div>
+      
+    
+    <div class="logout-container">
+        <button class="logout-btn" id="logoutBtn">LOG OUT</button>
+    </div>
+    
+   
+</div>
+</div>
+</div>
+    <div id="spinnerOverlay" class="spinner-overlay" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+      
+    
+</body>
+</html>

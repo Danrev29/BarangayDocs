@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BarangayDocs - Manage Complaints</title>
+  <link rel="stylesheet" href="Mcomplaint.css">
+ 
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+</head>
+<body>
+  
+ <div class="main-container">
+    <div class="sidebar navbar">
+      <div class="nav-top">
+      <p class="navbar-logo">BarangayDocs</p>
+       <a href="admindashboard.html"><img src="/img/dashboard.png" alt=""> Dashboard</a>
+      <a href="Mrequest.html"><img src="/img/docu.png" alt=""> Requests</a>
+      <a href="Mcomplaints.html"><img src="/img/message.png" alt=""> Complaints</a>
+      <a href="Mannouncement.html"><img src="/img/announce.png" alt=""> Announcements</a>
+       <a href="residents.html"> <img src="/img/profile.png" alt="">Residents</a>
+         <a href="manageMembers.html"><img src="/img/register.png" alt="">Manage Members</a>
+      <a href="settings.html"><img src="/img/settings.png" alt="">Settings</a>
+    </div>
+    </div>
+<div class="page-content">
+     <div class="content">
+
+
+      
+  <div class="container">
+    <div class="section">
+      
+      <h2>Manage Complaints</h2>
+      <!-- <p>This section will allow you to manage complaints submitted by residents.</p> -->
+
+      <!-- Complaint grid -->
+      <div id="complaintsGrid" class="complaints-grid"></div>
+
+      <!-- Link to resolved complaints page -->
+    <!--   <a href="resolvedComplaints.html" class="show-resolved-btn">Show Resolved Complaints</a>-->
+    </div>
+  </div>
+
+  <!-- Full Info Modal -->
+  <div id="complaintModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div>
+      <h3><strong>Complainant Name:</strong> <span id="modalName"></span></h3>
+      <p><strong>Address:</strong> <span id="modalAddress"></span></p>
+      <p><strong>Message:</strong> <span id="modalMessage"></span></p>
+      <p><strong>Submitted At:</strong> <span id="modalDate"></span></p>
+      <p><strong>Photo Uploaded:</strong> <span id="modalDate"></span></p>
+      </div>
+      <img id="modalImage" src="" alt="Complaint Image" style="max-width: 100%; margin-top: 10px; display: none; margin: 20px auto; border: solid 3px black;">
+      <div id="buttonContainer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+        <!-- Mark as Resolved Button -->
+        <button id="resolvedButton" style="display: none;">Mark as Resolved</button>
+    
+        <!-- Delete Button -->
+        <button id="deleteButton" style="display: none;">Delete</button>
+    </div>
+    
+    </div>
+  </div>
+
+ 
+  </div>
+  </div>
+  </div>
+  <!-- Scripts -->
+  <script type="module" src="MComplaint.js"></script>
+
+</body>
+</html>

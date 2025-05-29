@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BarangayDocs - Submit Complaint</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="complaint.css"/>
+  <link rel="stylesheet" href="loading.css"/>
+
+  <!-- Firebase SDKs -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js"></script>
+
+  <!-- App Scripts -->
+  <script type="module" src="complaint.js"></script>
+  <script type="module" src="dashboard.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("O2dvKPhnqFENt2voB");
+  </script>
+</head>
+
+<body class="loading">
+
+  <!-- Loading Screen -->
+  <div id="loadingScreen">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Mobile Navbar -->
+  <div class="mobile-navbar">
+    <p class="navbar-logo">BarangayDocs</p>
+    <button class="burger-btn" onclick="toggleMobileMenu()">☰</button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="request.html">Request</a>
+    <a href="announce.html">Announcements</a>
+    <a href="complaint.html">Complaint</a>
+    <a href="officials.html">Barangay Officials</a>
+    <a href="notifications.html">Notifications</a>
+    <a href="profile.html">Profile</a>
+    <button onclick="logout()" class="mobile-logout">Logout</button>
+  </div>
+
+  <!-- Main Page Content -->
+  <main id="pageContent" style="display: none;">
+    <div class="main-container">
+      <!-- Sidebar Navigation -->
+      <div class="sidebar navbar">
+        <div class="nav-top">
+          <p class="navbar-logo">BarangayDocs</p>
+          <a href="dashboard.html"><img src="img/dashboard.png" alt="home" />Dashboard</a>
+          <a href="officials.html"><img src="img/profile.png" alt="profile" />Barangay Officials</a>
+          <a href="request.html" id="requestLink"><img src="img/docu.png" alt="request" />Request</a>
+          <a href="announce.html"><img src="img/announce.png" alt="announcements" />Announcements</a>
+          <a href="complaint.html" id="complaintLink"><img src="img/message.png" alt="complaint" />Complaint</a>
+          <a href="notifications.html"><img src="img/notif.png" alt="notif" />Notifications</a>
+          <a href="profile.html"><img src="img/profile.png" alt="profile" />Profile</a>
+        </div>
+        <div class="logout-btn">
+          <button onclick="logout()"><img src="img/logout.png" alt="logout">Logout</button>
+        </div>
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="page-content">
+        <div class="content">
+
+          <!-- Complaint Section -->
+          <section class="complaint-container">
+            <div class="complaint-header">
+              <h2>File a Complaint to your Barangay</h2>
+              <p>Have a community concern? Submit a complaint about sanitation, noise, or public safety. Stay informed with updates.</p>
+              <button id="openComplaintModal" class="submitBtn">File a Complaint <img src="img/plus.png" alt="plus" style="width: 20px;"></button>
+              <button id="viewComplaintListBtn" class="submitBtn">View My Complaints <img src="img/docu.png" alt="list" style="width: 20px;"></button>
+            </div>
+
+            <!-- Complaint Form Modal -->
+            <div id="complaintModal" class="modal">
+              <div class="modal-content">
+                <span class="close-btn" id="closeModal">&times;</span>
+                <form class="complaint-form" id="complaintForm">
+                  <label for="fullName">Full Name:</label>
+                  <input type="text" id="fullName" placeholder="Your full name" required>
+
+                  <label for="userAddress">Address:</label>
+                  <input type="text" id="userAddress" placeholder="Your full address" required>
+
+                  <label for="complaintMessage">Complaint:</label>
+                  <textarea id="complaintMessage" placeholder="Describe your complaint..." rows="6" required></textarea>
+
+                  <label for="complaintImage">Upload Photo:</label>
+                  <input type="file" id="complaintImage" accept="image/*"><br>
+
+                  <button type="submit" class="submitBtn" id="submitBtn">Submit Complaint</button>
+                  <p id="responseMessage"></p>
+                </form>
+              </div>
+            </div>
+
+            <!-- Complaint List Modal -->
+            <div id="complaintListModal" class="modal">
+              <div class="modal-content">
+                <span class="close-btn" id="closeListModal">&times;</span>
+                <h3 style="text-align: center; margin-bottom: 10px;">Your Submitted Complaints</h3>
+                <p id="noComplaintsMessage" style="display: none; color: #777;">You haven't submitted any complaints yet.</p>
+                <div id="userComplaints"></div>
+              </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" style="display: none;">
+              <div class="spinner"></div>
+            </div>
+
+          </section>
+
+        </div>
+
+        <!-- Footer -->
+      
+      </div>
+    </div>
+  </main>
+
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>

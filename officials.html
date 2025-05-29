@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barangay Officials</title>
+
+  <!-- ✅ Firebase CDN SDKs -->
+<script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js"></script>
+
+<!-- ✅ Your script must come after Firebase loads -->
+<script defer type="module" src="officials.js"></script>
+
+  <link rel="stylesheet" href="officials.css" />
+</head>
+<body class="loading">
+  <div id="loadingScreen">
+    <div class="spinner"></div>
+  </div>
+
+  <main id="pageContent" style="display: none;">
+
+    <!-- Top Navbar for Mobile -->
+<div class="mobile-navbar">
+  <p class="navbar-logo">BarangayDocs</p>
+  <button class="burger-btn" onclick="toggleMobileMenu()">☰</button>
+</div>
+
+<!-- Collapsible Menu for Mobile -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="request.html">Request</a>
+  <a href="announce.html">Announcements</a>
+  <a href="complaint.html">Complaint</a>
+  <a href="notifications.html">Notifications</a>
+  <a href="officials.html">Barangay Officials</a>
+  <a href="profile.html">Profile</a>
+  <button onclick="logout()" class="mobile-logout">Logout</button>
+</div>
+  
+
+
+<!-- Navbar -->
+ <div class="main-container">
+    <div class="sidebar navbar">
+      <div class="nav-top">
+      <p class="navbar-logo">BarangayDocs</p>
+      <a href="dashboard.html"><img src="img/dashboard.png" alt="home" />Dashboard</a>
+      <a href="officials.html"><img src="img/profile.png" alt="profile" />Barangay Officials</a>
+      <a href="request.html" id="requestLink"><img src="img/docu.png" alt="request" />Request</a>
+      <a href="announce.html"><img src="img/announce.png" alt="announcements" />Announcements</a>
+      <a href="complaint.html" id="complaintLink"><img src="img/message.png" alt="complaint" /> Complaint</a>
+      <a href="notifications.html"><img src="img/notif.png" alt="notif" />Notifications</a>
+      <a href="profile.html"><img src="img/profile.png" alt="profile" />Profile</a>
+    </div>
+
+    <div class="logout-btn">
+     <button onclick="logout()"><img src="img/logout.png" alt="logout">Logout</button>
+    </div>
+    </div>
+
+
+
+<div class="officials-container">
+  <h2>Barangay Officials</h2>
+
+  <div class="officials-images">
+    <img src="img/k.jpg" alt="Barangay Officials 1" style="width: 100%; max-width: 800px; margin-bottom: 20px;" />
+   
+  </div>
+
+  <div class="position-section">
+    <h3>Barangay Captain</h3>
+    <div class="barangay-members-grid" id="captainGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>Kagawad</h3>
+    <div class="barangay-members-grid" id="kagawadGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>Secretary & Treasurer</h3>
+    <div class="barangay-members-grid" id="othersGrid"></div>
+  </div>
+
+ <div class="officials-images">
+   
+    <img src="img/468307840_122176280366115443_2854527174016487776_n.jpg" alt="SK Officials" style="width: 100%; max-width: 800px;" />
+  </div>
+
+  <div class="position-section">
+    <h3>SK Chairman</h3>
+    <div class="barangay-members-grid" id="skChairmanGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>SK Kagawads</h3>
+    <div class="barangay-members-grid" id="skKagawadGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>SK Secretary</h3>
+    <div class="barangay-members-grid" id="skSecretaryGrid"></div>
+  </div>
+
+  <div class="position-section">
+    <h3>SK Treasurer</h3>
+    <div class="barangay-members-grid" id="skTreasurerGrid"></div>
+  </div>
+</div>
+
+
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('show');
+  }
+</script>
+
+</body>
+</html>

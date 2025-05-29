@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Layout */
+.main-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.page-content {
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
+}
+
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.sidebar a img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.sidebar a:hover {
+  background-color: #329e26;
+  transform: scale(1.05);
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+  
+  .settings-icon a {
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.container {
+    width: 80%;
+    margin: 10px auto;
+    padding: 30px 0;
+}
+
+.announcement-header {
+    text-align: center;
+    padding: 50px 20px;
+    background: rgb(197, 197, 197);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin: 0 200px;
+}
+
+.announcement-list {
+    display: flex;
+    flex-direction: column; /* ✨ Make it vertical */
+    align-items: center; /* ✨ Center each announcement */
+    gap: 30px; /* ✨ Add spacing between each card */
+    margin: 40px 0px 70px 0px;
+
+}
+
+
+.announcement {
+    background: #ffffff;
+    padding:70px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 20px;
+}
+
+.announcement h3 {
+    font-size: 25px;
+    color: #15830b;
+    margin-bottom: 25px;
+    margin-top: -10px;
+    text-align: center;
+}
+
+.announcement p {
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.announcement-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push the date to the bottom */
+    min-height: 300px; /* Adjust height if needed */
+}
+
+.announcement .date {
+    font-size: 14px;
+    color: #666;
+    margin-top: auto; /* Push it to the bottom */
+    text-align: left;
+    padding-top: 20px;
+}
+
+
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #146b2e;
+  text-align: center;
+  padding: 16px;
+  color: #ffffff;
+  font-size: 14px;
+  border-top: 1px solid #e5e7eb;
+  z-index: 999;
+}
+
+/* Add Announcement Form */
+.announcement-form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.announcement-form h3 {
+    margin-bottom: 20px;
+    color: #15830b;
+   
+}
+
+.announcement-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.announcement-form input,
+.announcement-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.announcement-form button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #15830b;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.announcement-form button:hover {
+    background-color: #116807;
+}
+
+/* Add Delete Button inside announcement card */
+.announcement-card {
+    position: relative;
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.delete-button:hover {
+    background: #cc0000;
+}
+
+.header {
+   text-align: center;
+margin: 100px 0px 40px 0px;
+}
+ h2 {
+    text-align: center;
+    margin: 50px 0px 20px 0px;
+    font-size: 2rem;
+}
+
+

@@ -1,0 +1,151 @@
+/* Base styles and reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: white;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+    
+  }
+
+.navbar {
+    background: #2b2b2b;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+ 
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .navbar-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  
+  .navbar a:hover {
+    background-color: #329e26;
+    transform: scale(1.05);
+  }
+  
+  .navbar-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+  @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar-toggle {
+        display: block;
+      }
+
+      .navbar-links {
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+      }
+
+      .navbar-links.show {
+        max-height: 500px; /* large enough for all links */
+      }
+
+      .navbar a {
+        width: 100%;
+        text-align: left;
+      }
+    }
+
+    .footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #146b2e;
+  text-align: center;
+  padding: 16px;
+  color: #ffffff;
+  font-size: 14px;
+  z-index: 999;
+}
+
+.hero-section {
+  text-align: center;
+ margin:150px auto;
+ 
+}
+
+.hero-title {
+  font-size: 38px;
+  color: #146b2e;
+
+  font-weight: bold;
+}
+
+.hero-description {
+  font-size: 18px;
+  color: #333;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.hero-buttons .btn {
+  display: inline-block;
+  background-color: #329e26;
+  color: white;
+  padding: 12px 24px;
+  margin: 0 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-buttons .btn:hover {
+  background-color: #267c1d;
+  transform: scale(1.05);
+}

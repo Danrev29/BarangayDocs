@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  <link rel="stylesheet" href="profile.css" />
+  <link rel="stylesheet" href="loading.css" />
+  <script type="module" src="profile.js"></script>
+  <script type="module" src="dashboard.js"></script>
+</head>
+<body class="loading">
+  <div id="loadingScreen">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Top Navbar for Mobile -->
+<div class="mobile-navbar">
+  <p class="navbar-logo">BarangayDocs</p>
+  <button class="burger-btn" onclick="toggleMobileMenu()">☰</button>
+</div>
+
+<!-- Collapsible Menu for Mobile -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="request.html">Request</a>
+  <a href="announce.html">Announcements</a>
+  <a href="complaint.html">Complaint</a>
+  <a href="officials.html">Barangay Officials</a>
+  <a href="notifications.html">Notifications</a>
+  <a href="profile.html">Profile</a>
+  <button onclick="logout()" class="mobile-logout">Logout</button>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar navbar">
+      <div class="nav-top">
+        <p class="navbar-logo">BarangayDocs</p>
+       <a href="dashboard.html"><img src="img/dashboard.png" alt="home" />Dashboard</a>
+      <a href="officials.html"><img src="img/profile.png" alt="profile" />Barangay Officials</a>
+      <a href="request.html" id="requestLink"><img src="img/docu.png" alt="request" />Request</a>
+      <a href="announce.html"><img src="img/announce.png" alt="announcements" />Announcements</a>
+      <a href="complaint.html" id="complaintLink"><img src="img/message.png" alt="complaint" /> Complaint</a>
+      <a href="notifications.html"><img src="img/notif.png" alt="notif" />Notifications</a>
+      <a href="profile.html"><img src="img/profile.png" alt="profile" />Profile</a>
+      </div>
+      <div class="logout-btn">
+        <button onclick="logout()"><img src="img/logout.png" alt="logout">Logout</button>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="content">
+        <div class="profile-container">
+          <h2>User Profile</h2>
+
+         <div class="profile-header">
+  <div class="profile-picture-container">
+    <img id="profilePicture" class="profile-picture" src="img/default-profile.png" alt="Profile Picture" />
+    <input type="file" id="profilePicInput" accept="image/*" style="display: none" />
+  </div>
+  <div class="profile-header-actions">
+    <button id="uploadPicBtn">Change Profile Picture</button>
+    <div class="profile-actions-inline">
+      <button id="editProfileBtn">Edit Profile</button>
+      <button id="saveProfileBtn" style="display: none;">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+
+         
+
+          <div class="profile-section" id="personal-info">
+            <h4>Personal Information</h4>
+            <div class="profile-grid">
+              <div class="profile-row"><span>Full Name:</span> <input id="name" disabled /></div>
+              <div class="profile-row"><span>Email:</span> <input id="email" disabled /></div>
+              <div class="profile-row"><span>Gender:</span> <input id="gender" disabled /></div>
+              <div class="profile-row"><span>Date of Birth:</span> <input id="dob" disabled /></div>
+              <div class="profile-row"><span>Place of Birth:</span> <input id="placeOfBirth" disabled /></div>
+              <div class="profile-row"><span>Voter:</span> <input id="voters" disabled /></div>
+              <div class="profile-row"><span>PWD:</span> <input id="pwd" disabled /></div>
+              <div class="profile-row"><span>Single Parent:</span> <input id="singleParent" disabled /></div>
+              <div class="profile-row"><span>Civil Status:</span> <input id="civilStatus" disabled /></div>
+              <div class="profile-row"><span>Religion:</span> <input id="religion" disabled /></div>
+              <div class="profile-row"><span>Nationality:</span> <input id="nationality" disabled /></div>
+            </div>
+          </div>
+
+          <div class="profile-section" id="address-info">
+            <h4>Address</h4>
+            <div class="profile-grid">
+              <div class="profile-row"><span>House #:</span> <input id="houseNumber" disabled /></div>
+              <div class="profile-row"><span>Street:</span> <input id="streetAddress" disabled /></div>
+              <div class="profile-row"><span>Barangay:</span> <input id="barangay" disabled /></div>
+              <div class="profile-row"><span>Municipality:</span> <input id="municipality" disabled /></div>
+              <div class="profile-row"><span>Zip Code:</span> <input id="zipCode" disabled /></div>
+              <div class="profile-row"><span>Contact #:</span> <input id="contactNumber" disabled /></div>
+            </div>
+          </div>
+
+          <div class="profile-section" id="family-info">
+            <h4>Family Background</h4>
+            <div class="profile-grid">
+              <div class="profile-row"><span>Father's Name:</span> <input id="fatherName" disabled /></div>
+              <div class="profile-row"><span>Mother's Name:</span> <input id="motherName" disabled /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('show');
+  }
+</script>
+
+</body>
+</html>
