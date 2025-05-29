@@ -11,10 +11,25 @@
   <script type="module" src="register.js"></script>
 </head>
 <body>
+  <div class="mobile-navbar">
+  <p class="navbar-logo">BarangayDocs</p>
+  <button class="burger-btn" onclick="toggleMobileMenu()">☰</button>
+</div>
+
+<!-- Collapsible Menu for Mobile -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="register.html">Register</a>
+  <a href="login.html">Login</a>
+
+
+</div>
+  
+  
   <div class="navbar">
   <div class="navbar-left">
     <p class="navbar-logo">BarangayDocs</p>
-   <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+  
   </div>
 
   <div class="navbar-links">
@@ -41,4 +56,11 @@
     <p>&copy; 2025 BarangayDocs. All rights reserved.</p>
   </footer>
 </body>
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('show');
+  }
+</script>
+
 </html>
